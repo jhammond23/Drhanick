@@ -1,0 +1,885 @@
+.home-container {
+  margin: 0 auto;
+  overflow: hidden;
+
+}
+
+/* Background color and image */
+.whitetoblue {
+  /*  background: linear-gradient(to right, white 0%, var(--blue-color), white); */
+  background-size: cover;
+  position: relative;
+  height: 90vh;
+  background-image: url('../media/photoShoot/ALH\ at\ reception.jpg');
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: 100% 30%;
+  z-index: 0;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 1% 5%;
+
+
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  position: relative;
+}
+
+.hero-section::after {
+  position: absolute;
+
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border-radius: 50px;
+  padding: 20px;
+  background-color: #ffffff90;
+  border-radius: 50%;
+  padding: 100px;
+  content: '';
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 60px 40px #ffffff90;
+}
+
+/* Button Styling */
+.button {
+  padding: 10px 20px;
+  margin: 10px;
+  color: #fff;
+  background-color: var(--dark-blue);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--light-blue);
+}
+
+.show-more-button-cont {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+#show-more-button {
+  font-size: 1rem;
+  background-color: var(--dark-blue);
+  color: white;
+  text-shadow: 0 0 8px var(--dark-blue);
+}
+
+/* Container for buttons to align them horizontally */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.booknow {
+  background-color: var(--dark-blue) !important;
+  color: white !important;
+}
+
+.booknow::before {
+  content: '';
+  width: 100%;
+  height: 25px;
+  background-color: white !important;
+  position: absolute;
+  bottom: 0px;
+  z-index: 0;
+  left: 25px;
+
+}
+
+.h1 {
+  font-family: "Parisienne", 'Great Vibes', cursive;
+  font-weight: 400;
+  display: flex;
+  color: var(--dark-blue);
+  font-size: 6rem;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 0px;
+  text-shadow: 0 0 8px var(--dark-blue);
+}
+
+.face-section h1 {
+  text-shadow: 0 0 8px var(--dark-blue);
+
+}
+
+.hs1 {
+  color: var(--dark-blue);
+  font-size: 6vh;
+  margin-bottom: 1rem;
+  font-weight: 200;
+  display: inline;
+  position: relative;
+  margin-top: 0px;
+  font-family: 'Parisine', 'Great Vibes', cursive;
+  text-shadow: 0 0 4px var(--dark-blue);
+}
+
+.hs2 {
+  position: relative;
+  min-height: 1.25em;
+
+}
+
+.hs2::after {
+  width: 100%;
+  content: '';
+  height: 25px;
+  background-color: var(--grey-text);
+  opacity: .2;
+  position: absolute;
+  bottom: 0px;
+  z-index: 0;
+  left: 25px;
+}
+
+.typewriter-text {
+  display: inline;
+  width: fit-content;
+  color: var(--dark-blue);
+  font-size: 8vh;
+}
+
+.hero-section p {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+/* drhanick section */
+
+.drhanick-section {
+  display: flex;
+  align-items: center;
+  background: var(--dark-blue);
+  border-top: 15px solid var(--soft-gray);
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+}
+
+.drhanick-section::before {
+  content: '';
+  background: url('../media/photoShoot/supine\ Alex\ ALH\ out\ of\ photo.jpg');
+  background-size: cover;
+  opacity: .05;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.drhanick-content {
+  color: var(--grey-text);
+  padding: clamp(15px, 3rem, 50px);
+  width: 60%;
+  border: 10px solid white;
+  margin: 10% 10% 0 10%;
+  font-size: clamp(16px, 1.5vw, 1.5rem);
+  /* Adjust the values to your preference */
+  width: fit-content;
+  border-radius: 50px;
+  background-color: var(--light-grey);
+  position: relative;
+}
+
+
+
+
+.seal {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 2;
+  width: 25vw;
+  transform: translateY(-50%);
+  opacity: .05;
+  z-index: 0;
+}
+
+#seal2 {
+  left: 10px;
+
+}
+
+.drhanick-h2 {
+  color: var(--dark-blue);
+  position: relative;
+  width: fit-content;
+  font-size: 3rem;
+}
+
+.drhanick-h2::after {
+  width: 100%;
+  content: '';
+  height: 25px;
+  background-color: var(--dark-blue);
+  opacity: .2;
+  position: absolute;
+  bottom: 0px;
+  z-index: 0;
+  left: 25px;
+}
+
+.drhanick-content p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: var(--dark-blue);
+}
+
+.mandy-section {
+  border-top: 15px solid var(--soft-gray);
+
+}
+
+.mandy-content {
+  background-color: white;
+  border: 10px solid var(--light-grey);
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: left;
+  margin-left: 10%;
+  align-items: center;
+  padding: 2%;
+  margin-bottom: 5%;
+
+}
+
+.social-icons a {
+  color: var(--dark-blue);
+  font-size: 2rem;
+  margin: 0 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  background-color: white;
+  color: var(--dark-blue);
+}
+
+.drhanick {
+  width: 21% !important;
+  margin-right: 6%;
+  border-radius: 50px;
+  border: 10px solid white;
+  width: 300px;
+  position: initial;
+}
+
+.mandyPic {
+  border: 10px solid var(--light-grey);
+}
+
+.nursingTeam {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.drhanick-services {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10% 3%;
+  z-index: 1;
+}
+
+.button {
+  background-color: whitesmoke;
+  border-radius: 50px;
+  color: var(--grey-text);
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 10px;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  font-weight: 400;
+  border: 2px solid var(--grey-text);
+
+}
+
+.button:before {
+  content: '';
+  background-color: var(--soft-gray);
+  border-radius: 100%;
+  height: 150%;
+  left: -75%;
+  opacity: 0.5;
+  position: absolute;
+  top: -50%;
+  transform: rotate(45deg);
+  transition: all 1s ease;
+  width: 150%;
+  z-index: -1;
+}
+
+.button:hover {
+  background-color: var(--dark-blue);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  color: white;
+  opacity: .75;
+}
+
+.button:hover:before {
+  left: -30%;
+  opacity: 0;
+  top: -50%;
+}
+
+.button:active {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
+
+.service-button {
+  height: 300px;
+  width: 18%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* New Services section */
+.drhanick-services {
+  background-color: white;
+  padding: 3rem;
+  border-top: 15px solid var(--grey-text);
+  position: relative;
+
+}
+
+.services {
+  width: 100%;
+  font-size: 6vh;
+  margin-top: 0rem;
+  font-family: 'Great Vibes';
+  margin-left: 10%;
+  letter-spacing: 5px;
+
+}
+
+/* Testimonial section */
+.testimonial-section {
+  padding: 5rem;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--dark-blue), var(--blue-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-section h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #fff;
+}
+
+.testimonial-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.testimonial-card {
+  flex: 1 0 30%;
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 2px 10px #fff;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--blue-color);
+}
+
+/* Add this CSS */
+.testimonial-card:first-child {
+  flex: 1 0 100%;
+  max-width: 100%;
+}
+
+
+.testimonial-card p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.testimonial-card h4 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: var(--dark-blue);
+}
+
+.testimonial-card .stars {
+  color: #fada25;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* CTA section */
+.cta-section {
+  padding: 4rem 2rem;
+  background: #fff;
+  text-align: center;
+  color: #333;
+  border-top: 10px solid var(--grey-text);
+  transform: translateY(-75px);
+}
+
+.cta-section h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  background-color: #5a5aff;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 2rem;
+}
+
+.cta-button:hover {
+  background-color: #3333ff;
+}
+
+/* Responsive styles */
+@media (max-width: 1700px) {
+  .seal {
+    width: 20vw;
+  }
+  
+}
+
+@media (max-width: 1450px) {
+
+  .whitetoblue::before {
+    width: 45vw;
+  }
+
+  .drhanick-content {
+    margin: 5% 10% 1% 10%;
+  }
+
+  .social-icons {
+    margin-bottom: 10%;
+  }
+
+  .service-button {
+    height: 250px;
+    width: 30%;
+    font-size: 2rem;
+  }
+
+
+}
+
+
+@media (max-width: 1400px) {
+  .hs1::after {
+    bottom: 50%;
+    width: 80%;
+    left: 10%
+  }
+
+}
+
+@media (max-width: 1220px) {
+  .whitetoblue::before {
+    left: -200px;
+    width: 60vw;
+  }
+
+  
+}
+
+@media (max-width: 1200px) {
+
+  .whitetoblue {
+    height: 50vh;
+    min-height: 700px;
+  }
+  .drhanick-section {
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    max-height: none;
+    
+  }
+
+  .drhanick-content {
+    width: 90%;
+    margin: 20px 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+  }
+
+  .drhanick {
+    width: auto;
+    height: auto;
+    max-height: 60vh;
+    max-width: 60vw;
+    margin: 20px 0 40px 0; /* Added bottom margin for extra space */
+    border-radius: 10px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .drhanick-h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .drhanick-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+  }
+
+  .drhanick-services {
+    padding: 20px;
+    margin-top: 60px; /* Increased margin to ensure enough space between sections */
+    clear: both; /* Ensure this section clears any floats */
+  }
+  .button {
+    font-size: 2rem;
+    padding: 10px 20px;
+    
+  }
+}
+
+@media (max-width: 1600px) {
+  .testimonial-section {
+    padding: 20px;
+    width: 100%;
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 15px solid var(--grey-text);
+    text-align: center;
+  }
+
+  .testimonial-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .testimonial-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0; /* Add padding to avoid overflow */
+  }
+
+  .testimonial-card {
+    width: 90%; /* Ensure the card fits within the screen */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid var(--blue-color);
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+  }
+
+  .testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .testimonial-card h4 {
+    font-size: 1.25rem;
+    margin-top: 10px;
+    color: var(--dark-blue);
+  }
+
+  .testimonial-card .stars {
+    color: #fada25;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 1200px) {
+  .hero-section {
+    height: auto;
+    margin-top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  .whitetoblue {
+    background-size: cover;
+    background-position: center top; /* Ensure the image starts from the top */
+    background-image: url('../media/photoShoot/ALH\ at\ reception.jpg');
+    background-repeat: no-repeat;
+    z-index: 0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 1% 5%;
+    position: relative;
+  }
+
+  .whitetoblue::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--dark-blue);
+    opacity: 0.3;
+  }
+
+  .h1 {
+    font-size: 4rem;
+    z-index: 1;
+    position: relative;
+  }
+
+  .hs1 {
+    color: white;
+  }
+
+  .hero-section {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 50px;
+  }
+
+
+  .whitetoblue::before {
+    width: 150%;
+    left: -200px;
+    z-index: 0;
+    top: 50px;
+    opacity: .3;
+  }
+
+  .h1 {
+    font-size: 5rem;
+    text-shadow: 0 0 8px white;
+    width: 100%;
+  }
+
+  .hs1 {
+    font-size: 4rem;
+    margin: 2vh 0;
+    text-shadow: 0 0 8px var(--dark-blue);
+  }
+
+  .hs1::after {
+    display: none;
+
+  }
+
+  .hs2 {
+    font-size: 2.5rem;
+  }
+
+  .hs2::after {
+    display: none;
+  }
+
+  .buttons-container {
+    width: 60%;
+  }
+
+  .buttons-container a {
+    font-size: 2rem;
+  }
+
+  .typewriter-text {
+    font-size: 2.75rem;
+    max-width: 80%;
+    min-height: 8rem;
+  }
+
+  .booknow {
+    font-size: 1.5rem;
+  }
+
+  .drhanick-section {
+    flex-direction: column;
+    order: 2;
+  }
+
+  .drhanick-content {
+    width: 90vw;
+    position: relative;
+    margin: 3% auto;
+    font-size: 1.5rem;
+  }
+
+  .drhanick-h2 {
+    font-size: 2rem;
+  }
+
+  .drhanick {
+    margin-top: 30px;
+  }
+  
+
+  .drhanick-services {
+    padding: 2rem;
+    margin-top: 0;
+  }
+
+  .service-button {
+    height: 100px;
+    font-size: 1.5rem;
+  }
+
+  .testimonial-section {
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial-card {
+    flex-basis: 90%;
+    max-width: 70%;
+  }
+
+  .cta {
+    font-size: 1.5rem;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button {
+    font-size: 1.25rem;
+  
+  }
+
+  .service-button {
+    font-size: 2rem;
+  }
+
+  .testimonial-card p {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .h1 {
+    font-size: 2.5rem;
+  }
+  .hs1 {
+    font-size: 2rem;
+    margin: 0 auto;
+    text-wrap: nowrap;
+  }
+  .hero-section {
+    padding: 0;
+  }
+  .buttons-container {
+    width: 100%;
+  }
+  .buttons-container .button {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+  }
+  .drhanick-content {
+    padding: 10px;
+    font-size: 1.15rem;
+  }
+  .social-icons {
+    flex-direction: column;
+  }
+  .social-icons button {
+    font-size: 1rem;
+    width: 70vw;
+  }
+  .buttons-container a {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+  }
+  .buttons-container {
+    margin-top: 3vh;
+  }
+  .service-button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    width: 90vw;
+  }
+  .testimonial-section {
+    padding: 0;
+  }
+  .testimonial-card {
+    flex-basis: 90%;
+    max-width: 90%;
+  }
+  .testimonial-card p {
+    font-size: 1.25rem;
+  }
+  .seal {
+    height: 3rem;
+    top: 0;
+    right: 0;
+  }
+
+}
+

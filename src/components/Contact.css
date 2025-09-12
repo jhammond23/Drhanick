@@ -1,0 +1,202 @@
+.contact-us-container {
+  margin: 100px auto;
+  margin-bottom: 0px;
+  overflow: hidden;
+  color: var(--grey-text);
+  padding: 20px;
+  position: relative;
+}
+
+.contact-us-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../media/photoShoot/Hanick consult room discussion w crystal.jpg');
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+}
+
+.contact-header {
+  color: var(--dark-blue);
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.contact-description {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.book-now-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.book-now-btn {
+  background-color: var(--dark-blue);
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.contact-cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  border-radius: 50px;
+  margin: 50px auto;
+  padding: 10px 100px;
+  opacity: .8;
+  align-items: center;
+}
+
+.contact-card {
+  padding: 10px;
+  width: fit-content;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--dark-blue);
+  justify-content: center;
+  text-align: left;
+
+}
+
+.contact-card:nth-child(1) {
+  border-right: 3px solid var(--dark-blue);
+  margin: 0 150px;
+  padding-right: 150px;
+}
+
+.contact-card h3 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.button.contact-action-btn {
+  background-color: white;
+  color: var(--grey-text);
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 0;
+}
+
+.button.contact-action-btn:hover {
+  background-color: var(--grey-text);
+  color: white;
+}
+
+.map-hours-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.map-container, .hours-container {
+  flex: 1;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.map-title {
+  color: var(--dark-blue);
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+  border: none;
+}
+
+.hours-container {
+  background-color: var(--light-grey);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+}
+
+.hours-container h3 {
+  font-size: 3rem;
+  color: var(--dark-blue);
+  margin-bottom: 15px;
+}
+
+.hours-table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.hours-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.5rem;
+}
+
+.hours-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.hours-table td:first-child {
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-header {
+    font-size: 2rem;
+  }
+
+  .book-now-btn {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+  }
+
+  .contact-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .map-hours-container {
+    flex-direction: column;
+  }
+
+  .map-container iframe {
+    height: 250px;
+  }
+}

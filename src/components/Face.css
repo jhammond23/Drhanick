@@ -1,0 +1,373 @@
+/* Face Container */
+.face-container {
+  margin: 0 auto;
+  padding: 20px;
+  background: rgb(227, 227, 227);
+  margin-top: 100px;
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, var(--dark-blue) 61%, #ffffff 61%);
+  color: #fff;
+  padding: 40px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 80vh;
+  position: relative;
+  z-index: 1;
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../media/photoShoot/Hanick consult room discussion w crystal.jpg');
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+}
+
+.header-content {
+  width: 50%;
+}
+
+.header-content h1 {
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.header-content p {
+  font-size: 1.5em;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.header-image {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-image img {
+  width: 60%;
+  min-width: 500px;
+  height: auto;
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+/* Face Section */
+.face-section {
+  padding: 40px;
+  border-radius: 50px;
+  background: linear-gradient(145deg, var(--dark-blue) 500px, #ffffff 500px);
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
+
+.face-section::before,
+.neck-lift::before,
+.facial-implants::before,
+.brow-lift::before,
+.ear-surgery::before,
+.ear-well::before,
+.face-lift::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  border-radius: 50px;
+}
+
+.face-section h1 {
+  color: rgb(227, 227, 227);
+  margin-bottom: 10px;
+  font-size: 5rem;
+  text-align: left;
+  width: 450px;
+}
+
+.face-section p {
+  font-size: 1.75rem;
+  line-height: 1.5;
+  color: var(--dark-blue);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: right;
+  margin: 0 60% 0 40%;
+}
+
+/* Before-After Grid Layout */
+.before-after-container {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 80px;
+  padding: 0 20px;
+  width: fit-content;
+  background-color: var(--dark-blue);
+  border-radius: 50px;
+  border: 10px solid white;
+  overflow-x: auto;
+  margin-left: 20%;
+}
+
+.before-after-card {
+  border: 10px solid var(--dark-blue);
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.before-after-card > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.before-after-card img {
+  max-width: 400px;
+  min-width: 300px;
+  min-height: 250px;
+  border-radius: 25px;
+  border: 8px solid #fff;
+  margin: 0 25px;
+
+}
+
+.before-after-card figcaption {
+  font-size: 0.95rem;
+  color: white;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+.face-lift p,
+.no-image-node p {
+  margin: 0 70% 0 30%;
+}
+
+.ear-pictures img {
+  width: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ear-well a h1:hover, .face-section a h1:hover {
+  color: lightblue;
+  transition: all .25s ease-in-out;
+  letter-spacing: 2px;
+  text-decoration: underline;
+}
+
+/* Header Buttons */
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.header-buttons button {
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: rgb(227, 227, 227);
+  color: var(--dark-blue);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  width: max-content;
+  font-size: 1.05rem;
+}
+
+.header-buttons button:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.header-buttons button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .header-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px;
+    min-height: unset;
+  }
+
+  .header-content,
+  .header-image {
+    width: 100%;
+  }
+
+  .header-content {
+    margin-bottom: 5vh;
+  }
+
+  .header-content h1 {
+    font-size: 3em;
+  }
+
+  .header-content p {
+    font-size: 1.25em;
+  }
+
+  .header-image img {
+    width: 80%;
+    min-width: 300px;
+  }
+
+  .face-section {
+    background: linear-gradient(to bottom, var(--dark-blue) 150px, #ffffff 150px);
+    min-height: unset;
+    padding: 20px;
+  }
+
+  .face-section h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .face-section p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 25px auto;
+    width: 80%;
+  }
+
+  .header-buttons {
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .header-buttons button {
+    margin: 20px;
+  }
+
+  .before-after-container {
+    grid-template-columns: 1fr;
+  }
+
+  .before-after-card {
+    width: 100%;
+  }
+
+  .before-after-card img {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-section {
+    padding: 10px;
+  }
+
+  .header-content h1 {
+    font-size: 2.5em;
+  }
+
+  .header-content {
+    margin-bottom: 5vh;
+  }
+
+  .header-content p {
+    font-size: 1em;
+  }
+
+  .header-image img {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .face-section {
+    padding: 10px;
+  }
+
+  .face-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .face-section p {
+    font-size: 1.25rem;
+    width: 100%;
+    margin: 0;
+    padding: 60px 0;
+  }
+
+  .before-after-container {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .before-after-card {
+    width: 100%;
+  }
+
+  .before-after-card img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-buttons button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+
+
+
+
+
+
