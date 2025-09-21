@@ -1,23 +1,16 @@
 import React, { createRef } from "react";
 import "./Face.css";
-import "./Gallery.css"; // shared card + accent styles
 
 import neckLift1 from "../media/face/neckLift1.png";
 import neckLift2 from "../media/face/neckLift2.jpg";
-import neckLift3 from "../media/face/neckLift3.png";
-import neckLift4 from "../media/face/neckLift4.png";
 import faceHeader from "../media/ALH w loops draped patient.jpg";
 import earSugeryBefore from "../media/face/earSurgeryBefore.png";
 import earSugeryAfter from "../media/face/earSurgeryAfter.png";
 import faceLift1Before from "../media/face/1facialRejuvenation-before.jpg";
 import faceLift1After from "../media/face/1facialRejuvenation-after.jpg";
-import faceLift2Before from "../media/face/faceLift2-before.png";
-import faceLift2After from "../media/face/faceLift2-after.png";
 import eyeReconstructionBefore from "../media/reconstruction/eyeLidReconstruction-before.png";
-// NOTE: double extension looks wrong; verify actual filename (.png or .jpg)
+// NOTE: filename confirmed as provided
 import eyeReconstructionAfter from "../media/reconstruction/eyeLidReconstruction-after.png.jpg";
-import noseReconstructionBefore from "../media/reconstruction/noseReconstruction-before.png";
-import noseReconstructionAfter from "../media/reconstruction/noseReconstruction-after.png";
 import chinBefore from "../media/face/lateralChinBefore.jpg";
 import chinAfter from "../media/face/lateralChinAfter.jpg";
 
@@ -68,36 +61,45 @@ const Face = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="gallery-content">
+      <div className="face-content">
         {/* ===== Neck Lift ===== */}
         <section
           id="neck-lift"
           ref={neckLiftRef}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="neck-lift-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="neck-lift-title">Neck Lift</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Rejuvenate your appearance and reduce the signs of aging with an
-              expertly performed neck lift. This tightens sagging skin and
-              softens neck wrinkles, and can be paired with a facelift or done
-              alone.
-            </p>
+          <article className="face-card__cols">
+            {/* LEFT: Photos */}
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img src={neckLift1} alt="Neck lift — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">
+                    Before
+                  </span>
+                </div>
+                <div className="face-thumb">
+                  <img src={neckLift2} alt="Neck lift — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">
+                    After
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img src={neckLift1} alt="Neck lift — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img src={neckLift2} alt="Neck lift — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            {/* RIGHT: Copy */}
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Rejuvenate your appearance and reduce the signs of aging with an
+                expertly performed neck lift. This tightens sagging skin and softens
+                neck wrinkles, and can be paired with a facelift or done alone.
+              </p>
             </div>
           </article>
         </section>
@@ -106,38 +108,46 @@ const Face = () => {
         <section
           id="face-lift"
           ref={faceLiftRef}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="face-lift-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="face-lift-title">Facelift</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Reduce visible signs of aging, smooth deep creases, and enhance
-              facial contours. Often combined with a neck lift or brow lift for
-              balanced results.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img
+                    src={faceLift1Before}
+                    alt="Facelift — before"
+                    loading="lazy"
+                  />
+                  <span className="face-thumb__badge face-thumb__badge--before">
+                    Before
+                  </span>
+                </div>
+                <div className="face-thumb">
+                  <img
+                    src={faceLift1After}
+                    alt="Facelift — after"
+                    loading="lazy"
+                  />
+                  <span className="face-thumb__badge face-thumb__badge--after">
+                    After
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img
-                  src={faceLift1Before}
-                  alt="Facelift — before"
-                  loading="lazy"
-                />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img
-                  src={faceLift1After}
-                  alt="Facelift — after"
-                  loading="lazy"
-                />
-                <span className="img-badge after">After</span>
-              </div>
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Reduce visible signs of aging, smooth deep creases, and enhance
+                facial contours. Often combined with a neck lift or brow lift for
+                balanced results.
+              </p>
             </div>
           </article>
         </section>
@@ -146,29 +156,37 @@ const Face = () => {
         <section
           id="facial-implants"
           ref={facialImplantsRef}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="facial-implants-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="facial-implants-title">Facial Implants</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Permanent implants (e.g., chin, cheek) improve facial harmony and
-              profile. Chin augmentation is frequently paired with rhinoplasty.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img src={chinBefore} alt="Chin implant — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">
+                    Before
+                  </span>
+                </div>
+                <div className="face-thumb">
+                  <img src={chinAfter} alt="Chin implant — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">
+                    After
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img src={chinBefore} alt="Chin implant — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img src={chinAfter} alt="Chin implant — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Permanent implants (e.g., chin, cheek) improve facial harmony and
+                profile. Chin augmentation is frequently paired with rhinoplasty.
+              </p>
             </div>
           </article>
         </section>
@@ -177,20 +195,22 @@ const Face = () => {
         <section
           id="gender-affirmation"
           ref={genderAffirmation}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="gender-affirmation-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="gender-affirmation-title">Gender Affirmation</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Personalized procedures including tracheal shave, facial
-              feminization and masculinization—tailored for both aesthetic
-              excellence and personal goals.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                Personalized procedures including tracheal shave, facial
+                feminization and masculinization—tailored for both aesthetic
+                excellence and personal goals.
+              </p>
+            </div>
           </article>
         </section>
 
@@ -198,19 +218,21 @@ const Face = () => {
         <section
           id="ear-surgery"
           ref={earSurgeryRef}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="ear-surgery-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="ear-surgery-title">Cosmetic Ear Surgery</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Otoplasty can reposition overly projecting ears. Earlobe repairs
-              for scars or tears are usually performed in-office.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                Otoplasty can reposition overly projecting ears. Earlobe repairs
+                for scars or tears are usually performed in-office.
+              </p>
+            </div>
           </article>
         </section>
 
@@ -218,10 +240,10 @@ const Face = () => {
         <section
           id="ear-well"
           ref={earWellRef}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="ear-well-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="ear-well-title">
               <a
                 href="https://www.earwells.com/"
@@ -231,24 +253,32 @@ const Face = () => {
                 EarWell®
               </a>
             </h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Non-surgical infant ear molding for 0–6 weeks. Safely reshapes
-              the ear while cartilage is still formable.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two face-grid--square">
+                <div className="face-thumb">
+                  <img src={earSugeryBefore} alt="EarWell — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">
+                    Before
+                  </span>
+                </div>
+                <div className="face-thumb">
+                  <img src={earSugeryAfter} alt="EarWell — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">
+                    After
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col square">
-              <div className="img-slot">
-                <img src={earSugeryBefore} alt="EarWell — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img src={earSugeryAfter} alt="EarWell — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Non-surgical infant ear molding for 0–6 weeks. Safely reshapes
+                the ear while cartilage is still formable.
+              </p>
             </div>
           </article>
         </section>
@@ -257,37 +287,45 @@ const Face = () => {
         <section
           id="reconstructive-surgery"
           ref={reconstructiveSurgery}
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="reconstructive-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="reconstructive-title">Reconstructive Surgery</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Reconstruction after skin cancer excision, trauma, or injury—eye,
-              nose, and facial soft tissues.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img
+                    src={eyeReconstructionBefore}
+                    alt="Eyelid reconstruction — before"
+                    loading="lazy"
+                  />
+                  <span className="face-thumb__badge face-thumb__badge--before">
+                    Before
+                  </span>
+                </div>
+                <div className="face-thumb">
+                  <img
+                    src={eyeReconstructionAfter}
+                    alt="Eyelid reconstruction — after"
+                    loading="lazy"
+                  />
+                  <span className="face-thumb__badge face-thumb__badge--after">
+                    After
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img
-                  src={eyeReconstructionBefore}
-                  alt="Eyelid reconstruction — before"
-                  loading="lazy"
-                />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img
-                  src={eyeReconstructionAfter}
-                  alt="Eyelid reconstruction — after"
-                  loading="lazy"
-                />
-                <span className="img-badge after">After</span>
-              </div>
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Reconstruction after skin cancer excision, trauma, or injury—eye,
+                nose, and facial soft tissues.
+              </p>
             </div>
           </article>
         </section>

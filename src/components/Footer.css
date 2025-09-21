@@ -1,95 +1,151 @@
-
-
 .footer {
-  background-color: white;
+  background-color: #fff;
   padding: 40px 20px;
-  text-align: center;
   color: var(--dark-blue);
   border-top: 5px solid var(--grey-text);
   position: relative;
-  font-family: 'Arial', sans-serif;
 }
 
-.footer-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+.footer-wrapper { max-width: 1200px; margin: 0 auto; }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  gap: clamp(20px, 4vw, 40px);
+  align-items: start;
 }
+
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
 
 .footer-title {
   font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 3.6vw, 2.5rem);
+  margin: 0;
 }
+.footer-subtitle { margin: 0; font-size: clamp(1rem, 1.6vw, 1.1rem); opacity: .85; }
+.footer-cta { margin-top: 6px; display: inline-block; }
 
-.social-icons-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.social-icons-section a {
+.footer-heading {
+  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  margin: 0 0 6px 0;
   color: var(--dark-blue);
-  font-size: 1.5rem;
-  margin: 0 15px;
-  transition: color 0.3s ease;
+  font-weight: 700;
 }
 
-.social-icons-section a:hover {
-  color: lightblue;
+.footer-address { margin: 0; font-style: normal; line-height: 1.5; }
+.footer-address-line { display: block; }
+
+.footer-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 2px; }
+
+/* Footer action buttons (smaller) */
+.footer-btn {
+  border-radius: 999px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .95rem;
+  line-height: 1;
 }
 
-.developer-info {
-  font-size: 1rem;
-  margin-bottom: 10px;
+/* Brand icons (slightly smaller) */
+.brand-icon { display: inline-flex; width: 16px; justify-content: center; }
+
+/* Google Maps: white pill w/ Google blue text/border; hover fills blue */
+.btn-google-maps {
+  background: #fff;
+  color: #1a73e8;
+  border: 1px solid #dadce0;
+  box-shadow: none;
+}
+.btn-google-maps:hover {
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
 }
 
+/* Apple Maps: near-black pill; subtle hover */
+.btn-apple-maps {
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+}
+.btn-apple-maps:hover {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Contact links */
+.footer-contact-links { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.footer-link { color: var(--dark-blue); text-decoration: underline; font-weight: 600; }
+.footer-link:hover { opacity: .8; }
+
+/* Quick links */
+.footer-links ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.footer-links a { color: var(--dark-blue); text-decoration: none; border-bottom: 1px dashed transparent; padding-bottom: 2px; font-weight: 600; }
+.footer-links a:hover { border-color: var(--dark-blue); }
+
+/* Social + dev (smaller social pills) */
+.footer-mid { margin-top: clamp(18px, 3.5vw, 28px); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.social-icons-section { display: flex; gap: 10px; justify-content: center; }
+.footer-social-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 2px solid var(--dark-blue); color: var(--dark-blue);
+  transition: all .25s ease;
+}
+.footer-social-btn i { font-size: 1rem; }
+.footer-social-btn:hover { background: var(--dark-blue); color: #fff; }
+
+.developer-info { font-size: .9rem; opacity: .9; }
+
+/* Keep the dev button independent from global .button scale */
 .contact-dev-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 8px 14px;
   background-color: var(--dark-blue);
   color: white;
-  font-size: 1rem;
+  font-size: .9rem !important;
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  box-sizing: border-box;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
+.contact-dev-button:hover { background: #fff; color: var(--dark-blue); border: 3px solid var(--dark-blue); }
 
-.contact-dev-button:hover {
-  background-color: white;
+/* Bottom */
+.footer-bottom { margin-top: clamp(14px, 3vw, 20px); text-align: center; opacity: .7; }
+
+/* Your global .button (unchanged) */
+.button {
+  padding: 12px 20px;
+  background-color: var(--dark-blue);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+.button:hover {
+  background: #fff;
   color: var(--dark-blue);
-  border: 5px solid var(--dark-blue);
+  border: 2px solid var(--dark-blue);
+  transform: translateY(-2px);
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-  .footer-title {
-      font-size: 1.5rem;
-  }
-
-  .social-icons-section a {
-      font-size: 1.2rem;
-      margin: 0 10px;
-  }
-
-  .developer-info, .contact-button {
-      font-size: 0.9rem;
-  }
+/* Responsive */
+@media screen and (max-width: 980px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-btn { padding: 8px 12px; font-size: .92rem; }
 }
-
-@media screen and (max-width: 480px) {
-  .footer-title {
-      font-size: 1.2rem;
-  }
-
-  .social-icons-section a {
-      font-size: 1rem;
-      margin: 0 8px;
-  }
-
-  .developer-info, .contact-button {
-      font-size: 0.8rem;
-  }
+@media screen and (max-width: 640px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-actions { justify-content: flex-start; }
+  .footer-social-btn { width: 34px; height: 34px; }
 }

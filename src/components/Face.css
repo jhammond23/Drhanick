@@ -1,373 +1,458 @@
-/* Face Container */
+/* =========================================================
+   Face.css — stable image sizing + safe no-image layout
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --dark-blue: #060a30;
+  --panel-blue: var(--dark-blue);
+  --ink: #0f172a;
+
+  --card-bg: #fff;
+  --card-border: rgba(0,0,0,.08);
+  --card-shadow: 0 20px 40px rgba(0,0,0,.12);
+
+  --content-max: 1600px;
+  --radius: 28px;
+
+  /* Image sizing “rails” (tuned) */
+  --thumb-min: 180px;         /* smallest a thumb can go */
+  --thumb-ideal: 300px;       /* preferred width on laptop/desktop */
+  --thumb-max: 360px;         /* cap so it never explodes */
+
+  /* Grid gap + band sizes */
+  --media-gap: 14px;
+  --diag-depth: 38%;          /* blue diagonal depth on desktop */
+  --band-height: 140px;       /* blue band height on mobile/tablet */
+
+  --lead-size: clamp(1.0625rem, 1.25vw, 1.5rem);
+}
+
+/* ---------- Page shell ---------- */
 .face-container {
   margin: 0 auto;
   padding: 20px;
-  background: rgb(227, 227, 227);
+  background: #e3e3e3;
   margin-top: 100px;
 }
+.face-content {
+  width: min(95vw, var(--content-max));
+  margin: 32px auto 96px;
+}
 
-/* Header Section */
+/* ---------- HERO ---------- */
 .header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(145deg, var(--dark-blue) 61%, #ffffff 61%);
+  background: linear-gradient(145deg, var(--dark-blue) 61%, #fff 61%);
   color: #fff;
-  padding: 40px;
+  padding: clamp(26px, 4vw, 48px);
   border-radius: 50px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,.2), inset 0 0 10px rgba(0,0,0,.1);
   overflow: hidden;
-  min-height: 80vh;
+  min-height: 60vh;
   position: relative;
   z-index: 1;
 }
-
 .header-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('../media/photoShoot/Hanick consult room discussion w crystal.jpg');
+  inset: 0;
+  background: url('../media/photoShoot/Hanick consult room discussion w crystal.jpg') center/cover no-repeat;
   z-index: -1;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.1;
+  opacity: .1;
 }
-
-.header-content {
-  width: 50%;
-}
-
+.header-content { width: 50%; }
 .header-content h1 {
-  font-size: 4em;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.header-content p {
-  font-size: 1.5em;
-  line-height: 1.5;
-  opacity: 0.9;
-}
-
-.header-image {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-image img {
-  width: 60%;
-  min-width: 500px;
-  height: auto;
-  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-  border-radius: 50px;
-}
-
-/* Face Section */
-.face-section {
-  padding: 40px;
-  border-radius: 50px;
-  background: linear-gradient(145deg, var(--dark-blue) 500px, #ffffff 500px);
-  margin-top: 50px;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  
-}
-
-.face-section::before,
-.neck-lift::before,
-.facial-implants::before,
-.brow-lift::before,
-.ear-surgery::before,
-.ear-well::before,
-.face-lift::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.05;
-  border-radius: 50px;
-}
-
-.face-section h1 {
-  color: rgb(227, 227, 227);
-  margin-bottom: 10px;
-  font-size: 5rem;
-  text-align: left;
-  width: 450px;
-}
-
-.face-section p {
-  font-size: 1.75rem;
-  line-height: 1.5;
-  color: var(--dark-blue);
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  width: 50%;
-  text-align: right;
-  margin: 0 60% 0 40%;
-}
-
-/* Before-After Grid Layout */
-.before-after-container {
-  display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 80px;
-  padding: 0 20px;
-  width: fit-content;
-  background-color: var(--dark-blue);
-  border-radius: 50px;
-  border: 10px solid white;
-  overflow-x: auto;
-  margin-left: 20%;
-}
-
-.before-after-card {
-  border: 10px solid var(--dark-blue);
-  border-radius: 25px;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.before-after-card > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.before-after-card img {
-  max-width: 400px;
-  min-width: 300px;
-  min-height: 250px;
-  border-radius: 25px;
-  border: 8px solid #fff;
-  margin: 0 25px;
-
-}
-
-.before-after-card figcaption {
-  font-size: 0.95rem;
-  color: white;
-  margin-top: 8px;
-  font-weight: bold;
-  text-align: center;
-  letter-spacing: 2px;
-  font-style: italic;
-}
-
-.face-lift p,
-.no-image-node p {
-  margin: 0 70% 0 30%;
-}
-
-.ear-pictures img {
-  width: 300px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.ear-well a h1:hover, .face-section a h1:hover {
-  color: lightblue;
-  transition: all .25s ease-in-out;
-  letter-spacing: 2px;
-  text-decoration: underline;
-}
-
-/* Header Buttons */
-.header-buttons {
-  display: flex;
-  justify-content: center;
-  width: fit-content;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  padding: 0 20px;
-}
-
-.header-buttons button {
-  padding: 12px 24px;
-  margin: 10px;
-  background-color: rgb(227, 227, 227);
-  color: var(--dark-blue);
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  font-weight: bold;
-  width: max-content;
-  font-size: 1.05rem;
-}
-
-.header-buttons button:hover {
-  background-color: var(--dark-blue);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: #fff;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 4rem);
+  margin: 0 0 .4em 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+}
+.header-content p {
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  line-height: 1.55;
+  opacity: .95;
+  margin: 0;
+}
+.header-image { width: 50%; display: flex; justify-content: center; align-items: center; }
+.header-image img {
+  width: clamp(260px, 50vw, 560px);
+  height: auto;
+  border-radius: 50px;
+  box-shadow: -5px 5px 15px rgba(0,0,0,.3);
 }
 
-.header-buttons button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+/* Buttons */
+.header-buttons {
+  display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px;
+}
+.header-buttons button{
+  padding: 12px 24px; background:#e3e3e3; color:var(--dark-blue);
+  border:0; border-radius:999px; font-weight:700; font-size:1.05rem;
+  box-shadow:0 2px 5px rgba(0,0,0,.2); cursor:pointer; transition:.25s ease;
+}
+.header-buttons button:hover{ background:var(--dark-blue); color:#fff; transform:translateY(-2px); }
+
+/* =========================================================
+   CARD SYSTEM — images LEFT, text RIGHT
+   ========================================================= */
+.face-card{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  padding: clamp(16px, 2.2vw, 32px);
+  margin: 28px 0 44px;
+  position:relative; overflow:hidden;
 }
 
-/* Media Queries */
-@media screen and (max-width: 1200px) {
-  .header-section {
+/* Desktop/laptop diagonal */
+.face-card--diagonal::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(135deg, var(--panel-blue) 0%, var(--panel-blue) var(--diag-depth), transparent var(--diag-depth));
+  z-index:0;
+}
+
+/* Card header */
+.face-card__header{
+  position:relative; z-index:1;
+  display:flex; align-items:center; gap:14px;
+  margin:4px 2px 12px;
+}
+.face-card__header h2{
+  margin:0; color:#fff; text-shadow:0 1px 0 rgba(0,0,0,.35);
+  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+  font-weight:800;
+  width:min(100%, 1200px); /* allow longer titles */
+}
+.face-card__header h2 a{ color:inherit; text-decoration:none; }
+.face-card__header h2 a:hover{ text-decoration:underline; }
+
+/* Thin divider */
+.face-card__accent{
+  position:relative; z-index:1; height:4px; width:100%;
+  border-radius:999px; background:linear-gradient(to right,#1e3a8a,#42749b); opacity:.9;
+}
+
+/* Columns: media | copy */
+.face-card__cols{
+  position:relative; z-index:1;
+  display:grid;
+  grid-template-columns: minmax(280px, 40vw) 1fr; /* media capped by viewport width */
+  align-items:start;
+  gap: clamp(18px, 2vw, 28px);
+  margin-top: 14px;
+}
+
+/* ------------ MEDIA COLUMN ------------- */
+/* A wrapper that constrains the total media width so thumbs never overflow */
+.face-card__media{
+  justify-self:start;
+  max-width: clamp(340px, 42vw, 720px);  /* never too small or too big */
+  width: 100%;
+}
+
+/* Thumbs always fit; auto-fit picks as many per row as space allows */
+.face-grid{
+  display:grid; gap: var(--media-gap);
+  grid-template-columns: repeat(auto-fit, minmax(var(--thumb-min), 1fr));
+}
+
+/* For classic Before/After: force exactly two columns that scale gracefully */
+.face-grid--two{
+  grid-template-columns: repeat(2, minmax(var(--thumb-min), min(var(--thumb-ideal), var(--thumb-max))));
+}
+
+/* Square sets (e.g., EarWell) */
+.face-grid--square .face-thumb{ aspect-ratio: 1 / 1; }
+
+/* Individual thumb sizing is 100% of its grid cell */
+.face-thumb{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  position:relative; border-radius:16px; overflow:hidden;
+  border:1px solid var(--card-border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 8px 18px rgba(0,0,0,.08);
+  background:#f3f4f6;
+}
+.face-thumb img{
+  width:100%; height:100%; object-fit:cover;
+  display:block; transition:transform .2s ease;
+}
+.face-thumb:hover img{ transform: scale(1.015); }
+
+/* Badges */
+.face-thumb__badge{
+  position:absolute; bottom:8px; left:8px;
+  padding:4px 10px; font-size:.8rem; font-weight:800; border-radius:999px;
+  color:#fff; text-transform:uppercase; letter-spacing:.4px; box-shadow:0 6px 14px rgba(0,0,0,.25);
+}
+.face-thumb__badge--before{ background:#2563eb; }
+.face-thumb__badge--after{  background:#16a34a; }
+
+/* ------------ COPY COLUMN ------------- */
+.face-card__copy{
+  text-align:right;
+  padding-right: clamp(12px, 2vw, 28px);   /* tidy right edge */
+  margin-left: clamp(0px, 2vw, 36px);      /* separation from diagonal */
+}
+.face-card__lead{
+  font-size: var(--lead-size);
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 10px 0;
+}
+
+/* Text-only cards (no media) — copy sits in the right column but NOT under blue */
+.face-card__copy--full{
+  grid-column: 2 / 3;
+  text-align: right;
+  justify-self: end;
+  padding-right: clamp(16px, 3vw, 48px);
+  max-width: min(88%, 100ch);
+  /* keep away from diagonal on desktop by pushing left edge a bit */
+  padding-left: clamp(8px, 4vw, 80px);
+}
+
+/* Mandy card: extra guard so copy never rides under the diagonal on wide screens */
+#mandy-buie .face-card__copy{
+  margin-left: 300px;                 /* DESKTOP spacing you approved */
+  max-width: min(75ch, 72%);
+  padding-right: clamp(16px, 2.5vw, 40px);
+}
+
+/* Slightly tighter right padding when media is present (looks cleaner) */
+.face-card__cols .face-card__copy{ padding-right: clamp(8px, 1.5vw, 20px); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* ===== Wide tablets / small laptops ===== */
+@media (max-width: 1400px){
+  :root { --thumb-ideal: 280px; }
+  #mandy-buie .face-card__copy{
+    margin-left: 240px;              /* STEP DOWN at <1400px */
+    max-width: min(75ch, 78%);
+  }
+}
+
+@media (max-width: 1200px){
+  .header-section{
     flex-direction: column;
     text-align: center;
-    padding: 50px;
+    padding: clamp(24px, 4vw, 44px);
     min-height: unset;
   }
+  .header-content, .header-image{ width:100%; }
+  .header-content{ margin-bottom: 4vh; }
+  .header-image img{ width: clamp(260px, 60vw, 500px); }
 
-  .header-content,
-  .header-image {
-    width: 100%;
+  #mandy-buie .face-card__copy{
+    margin-left: 180px;              /* STEP DOWN at <1200px (per the version you liked) */
+    max-width: min(75ch, 80%);
   }
 
-  .header-content {
-    margin-bottom: 5vh;
-  }
+  /* media column behaves well on these widths */
+  .face-card__media{ max-width: clamp(340px, 50vw, 680px); }
+}
 
-  .header-content h1 {
-    font-size: 3em;
-  }
-
-  .header-content p {
-    font-size: 1.25em;
-  }
-
-  .header-image img {
-    width: 80%;
-    min-width: 300px;
-  }
-
-  .face-section {
-    background: linear-gradient(to bottom, var(--dark-blue) 150px, #ffffff 150px);
-    min-height: unset;
-    padding: 20px;
-  }
-
-  .face-section h1 {
-    font-size: 3rem;
-    text-align: center;
-  }
-
-  .face-section p {
-    font-size: 1.5rem;
-    text-align: center;
-    margin: 25px auto;
-    width: 80%;
-  }
-
-  .header-buttons {
-    margin: 0 auto;
-    align-items: center;
-  }
-
-  .header-buttons button {
-    margin: 20px;
-  }
-
-  .before-after-container {
+/* ===== Tablets and down ===== */
+@media (max-width: 980px){
+  /* Stack columns and switch diagonal → top band. Also add padding so text
+     NEVER sits under the band (this fixes overlap for no-image cards). */
+  .face-card__cols{
     grid-template-columns: 1fr;
+    gap: clamp(14px, 3vw, 22px);
+    padding-top: 0; /* default */
+  }
+  .face-card--diagonal::before{
+    background: linear-gradient(180deg, var(--panel-blue) 0, var(--panel-blue) var(--band-height), transparent var(--band-height));
+  }
+  .face-card--diagonal .face-card__cols{
+    padding-top: calc(var(--band-height) + 12px); /* <-- keep ALL copy below band */
   }
 
-  .before-after-card {
+  /* Media column: centered and capped to viewport (always fits) */
+  .face-card__media{
+    justify-self: center;
+    max-width: min(92vw, 620px);
     width: 100%;
   }
 
-  .before-after-card img {
-    width: 80%;
+  /* 2-up before/after becomes fluid but never microscopic */
+  .face-grid--two{
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+
+  /* Copy becomes left-aligned and full-width; no manual left offsets */
+  .face-card__copy,
+  .face-card__copy--full{
+    grid-column: auto;
+    text-align: left;
+    justify-self: start;
+    padding-right: 0;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  /* Mandy on tablet: remove big offset, rely on band padding */
+  #mandy-buie .face-card__copy{ margin-left: 0; max-width: 100%; }
+}
+
+/* ===== Phones ===== */
+@media (max-width: 640px){
+  .header-section{ padding: 16px; border-radius: 28px; }
+  .header-content h1{ font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .header-content p{ font-size: clamp(1rem, 3.8vw, 1.125rem); }
+  .header-image img{ width: clamp(220px, 92vw, 380px); }
+
+  .face-card{ padding: clamp(14px, 4vw, 20px); border-radius: 22px; }
+  .face-card__cols{ gap: clamp(12px, 3.8vw, 18px); }
+  .face-card--diagonal .face-card__cols{ padding-top: calc(var(--band-height) + 10px); }
+
+  /* On very narrow, stack before/after vertically so each gets decent size */
+  .face-grid--two{ grid-template-columns: 1fr; }
+
+  /* Thumbs remain legible */
+  .face-thumb{ aspect-ratio: 4 / 3; }
+}
+
+/* ===== Ultra-narrow phones ===== */
+@media (max-width: 380px){
+  .header-buttons{ gap: 8px; }
+  .header-buttons button{ padding: 10px 16px; font-size: .95rem; }
+}
+
+/* =========================================================
+   MANDY CARD: pull copy further left + widen text area
+   (place this block at the end of Face.css)
+   ========================================================= */
+
+/* Reduce how much of the card the diagonal occupies (Mandy only) */
+#mandy-buie.face-card.face-card--diagonal::before{
+  /* give copy more space by shrinking the diagonal depth on desktop */
+  background: linear-gradient(
+    135deg,
+    var(--panel-blue) 0%,
+    var(--panel-blue) 28%,
+    transparent 28%
+  );
+}
+
+/* Widen the layout so the text column has more room */
+#mandy-buie.face-card .face-card__cols{
+  grid-template-columns: minmax(340px, 36%) 1fr; /* media | copy */
+}
+
+/* Pull the copy further left + allow a wider block */
+#mandy-buie .face-card__copy{
+  margin-left: 180px;                    /* was 300px */
+  max-width: min(95ch, 88%);
+  padding-right: clamp(12px, 1.6vw, 28px);
+}
+
+/* ----- Fine-tune across breakpoints ----- */
+
+/* Very wide screens */
+@media (min-width: 1600px){
+  #mandy-buie .face-card__copy{ margin-left: 200px; }
+}
+
+/* < 1400px */
+@media (max-width: 1400px){
+  #mandy-buie .face-card__copy{
+    margin-left: 160px;
+    max-width: min(95ch, 90%);
   }
 }
 
-@media screen and (max-width: 768px) {
-  .header-section {
-    padding: 10px;
+/* < 1200px */
+@media (max-width: 1200px){
+  #mandy-buie.face-card .face-card__cols{
+    grid-template-columns: minmax(300px, 42%) 1fr; /* give media a fixed width cap, more room for copy */
+  }
+  #mandy-buie .face-card__copy{ margin-left: 120px; }
+}
+
+/* < 980px (tablets & down) — keep your current stacked rules */
+@media (max-width: 980px){
+  #mandy-buie .face-card__copy{ margin-left: 0; max-width: 100%; }
+}
+
+/* =========================================================
+   MANDY — Tablet & Mobile refinements
+   (append to the end of Face.css)
+   ========================================================= */
+
+/* ---------- Tablets (<980px) ---------- */
+@media (max-width: 980px){
+  /* Switch diagonal → top band & ensure content clears it */
+  #mandy-buie.face-card--diagonal::before{
+    background: linear-gradient(
+      180deg,
+      var(--panel-blue) 0,
+      var(--panel-blue) var(--band-height),
+      transparent var(--band-height)
+    );
+  }
+  #mandy-buie.face-card .face-card__cols{
+    grid-template-columns: 1fr;                   /* stack */
+    gap: clamp(12px, 3.5vw, 22px);
+    padding-top: calc(var(--band-height) + 12px); /* keep text below band */
   }
 
-  .header-content h1 {
-    font-size: 2.5em;
-  }
+  /* Headline can use full width on small screens */
+  #mandy-buie .face-card__header h2{ width: auto; }
 
-  .header-content {
-    margin-bottom: 5vh;
-  }
-
-  .header-content p {
-    font-size: 1em;
-  }
-
-  .header-image img {
+  /* Image: centered, capped to viewport, portrait-friendly */
+  #mandy-buie .face-card__media{
+    justify-self: center;
+    max-width: min(86vw, 440px);
     width: 100%;
-    min-width: 200px;
+  }
+  /* If Mandy’s photo is in a single thumb, give it a portrait-ish frame */
+  #mandy-buie .face-thumb{ aspect-ratio: 4 / 5; }
+  #mandy-buie .face-thumb img{
+    object-fit: cover;
+    object-position: 50% 22%; /* nudge down so her head isn’t cropped */
   }
 
-  .face-section {
-    padding: 10px;
-  }
-
-  .face-section h1 {
-    font-size: 2.5rem;
-  }
-
-  .face-section p {
-    font-size: 1.25rem;
-    width: 100%;
-    margin: 0;
-    padding: 60px 0;
-  }
-
-  .before-after-container {
-    grid-template-columns: 1fr;
-    padding: 0 10px;
-  }
-
-  .before-after-card {
-    width: 100%;
-  }
-
-  .before-after-card img {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .header-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header-buttons button {
-    width: 100%;
-    margin: 5px 0;
+  /* Copy: left-aligned and comfortably wide */
+  #mandy-buie .face-card__copy{
+    text-align: left;
+    margin-left: 0;
+    padding-right: 0;
+    max-width: 92vw;
   }
 }
 
+/* ---------- Phones (<640px) ---------- */
+@media (max-width: 640px){
+  /* Slightly shorter band for a tighter card */
+  :root{ --band-height: 110px; }
 
+  #mandy-buie.face-card{ padding: clamp(14px, 4vw, 20px); }
+  #mandy-buie .face-card__cols{ gap: clamp(10px, 3.8vw, 16px); }
 
+  /* Image: a touch smaller on phones */
+  #mandy-buie .face-card__media{
+    max-width: min(90vw, 340px);
+    margin-top: 4px;
+  }
+  #mandy-buie .face-thumb{
+    aspect-ratio: 3 / 4;       /* a bit taller look on phones */
+    border-radius: 18px;
+  }
+  #mandy-buie .face-thumb img{ object-position: 50% 20%; }
 
-
-
-
+  /* Copy readability on phones */
+  #mandy-buie .face-card__copy{
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 94vw;
+  }
+}

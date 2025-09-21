@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import "./NonSurgical.css";
-import "./Gallery.css"; // shared card + grid styles
+import "./NonSurgical.css"; // make sure this includes the same face-card system used on Face.css
 
 import faceHeader from "../media/face/crystal stock face feel mandy hands.jpg";
 import fillerBefore1 from "../media/nonsurgical/fillerBefore1.png";
@@ -30,7 +29,7 @@ const NonSurgical = () => {
     window.scrollTo({ top: ref.current.offsetTop - 100, behavior: "smooth" });
 
   return (
-    <div className="non-surgical-container" style={{ marginTop: "100px" }}>
+    <div className="non-surgical-container face-container" style={{ marginTop: "100px" }}>
       {/* HERO */}
       <div className="header-section">
         <div className="header-content">
@@ -56,37 +55,42 @@ const NonSurgical = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="gallery-content">
+      <div className="face-content">
         {/* Mandy */}
         <section
           ref={mandyBuieRef}
           id="mandy-buie"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="mandy-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="mandy-title">Meet Mandy Buie, LPN</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            {/* Left: photo(s) / Right: text (your CSS overrides can handle layout) */}
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
+          <article className="face-card__cols">
+            {/* LEFT: photo */}
+            <div className="face-card__media face-card__media--narrow">
+              <div className="face-thumb face-thumb--focus-top">
                 <img src={mandy} alt="Mandy Buie, LPN" loading="lazy" />
               </div>
             </div>
 
-            <p className="section-lead">
-              Mandy is a wonderful asset to the MOENT Facial Plastic Surgery team! She
-              specializes in non-surgical treatments designed to rejuvenate aging skin,
-              helping patients achieve a refreshed, youthful appearance.
-            </p>
-            <p className="section-lead">
-              Her expertise includes PCA professional skincare and chemical peels,
-              microneedling, dermaplaning, and Botox injections. Mandy also supports
-              Dr. Hanick during in-office procedures such as CO₂ laser resurfacing.
-            </p>
+
+
+            {/* RIGHT: text */}
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Mandy is a wonderful asset to the MOENT Facial Plastic Surgery team! She
+                specializes in non-surgical treatments designed to rejuvenate aging skin,
+                helping patients achieve a refreshed, youthful appearance.
+              </p>
+              <p className="face-card__lead">
+                Her expertise includes PCA professional skincare and chemical peels,
+                microneedling, dermaplaning, and Botox injections. Mandy also supports
+                Dr. Hanick during in-office procedures such as CO₂ laser resurfacing.
+              </p>
+            </div>
           </article>
         </section>
 
@@ -94,81 +98,96 @@ const NonSurgical = () => {
         <section
           ref={coolPeelRef}
           id="coolpeel"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="coolpeel-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="coolpeel-title">CoolPeel®</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              A fractional CO₂ treatment designed to refresh skin with minimal downtime.
-            </p>
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img src={coolPeel1} alt="CoolPeel — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
+          <article className="face-card__cols">
+            {/* LEFT: before/after */}
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img src={coolPeel1} alt="CoolPeel — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+                </div>
+                <div className="face-thumb">
+                  <img src={coolPeel2} alt="CoolPeel — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                </div>
               </div>
-              <div className="img-slot">
-                <img src={coolPeel2} alt="CoolPeel — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            </div>
+
+            {/* RIGHT: copy */}
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                A fractional CO₂ treatment designed to refresh skin with minimal downtime.
+              </p>
             </div>
           </article>
         </section>
 
-        {/* CO2 Laser Resurfacing */}
+        {/* CO₂ Laser Resurfacing */}
         <section
           ref={co2LaserRef}
           id="co2-laser-resurfacing"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="co2-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="co2-title">CO₂ Laser Resurfacing</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Fractional CO₂ laser is a gold-standard resurfacing option for sun damage
-              and age-related texture changes. Treatments can be performed in-office with
-              comfort measures, or under sedation when combined with other services.
-            </p>
-            <p className="section-lead">Example patient photos courtesy of Cartessa Laser.</p>
+          <article className="face-card__cols">
+            {/* LEFT: before/after */}
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img src={co2Before1} alt="CO₂ laser resurfacing — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+                </div>
+                <div className="face-thumb">
+                  <img src={co2After1} alt="CO₂ laser resurfacing — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              <div className="img-slot">
-                <img src={co2Before1} alt="CO₂ laser resurfacing — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img src={co2After1} alt="CO₂ laser resurfacing — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            {/* RIGHT: copy */}
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Fractional CO₂ laser is a gold-standard resurfacing option for sun damage
+                and age-related texture changes. Treatments can be performed in-office with
+                comfort measures, or under sedation when combined with other services.
+              </p>
+              <p className="face-card__lead">Example patient photos courtesy of Cartessa Laser.</p>
             </div>
           </article>
         </section>
 
-        {/* Botox */}
+        {/* Botox (text only) */}
         <section
           ref={botoxRef}
           id="botox"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="botox-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="botox-title">Botox</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Botulinum toxin injections soften dynamic lines non-surgically. Dr. Hanick
-              and nurse Mandy Buie offer treatments in our comfortable, private procedure room.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                Botulinum toxin injections soften dynamic lines non-surgically. Dr. Hanick
+                and nurse Mandy Buie offer treatments in our comfortable, private procedure room.
+              </p>
+            </div>
           </article>
         </section>
 
@@ -176,88 +195,100 @@ const NonSurgical = () => {
         <section
           ref={fillerRef}
           id="cosmetic-filler"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="filler-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="filler-title">Cosmetic Filler</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Injectable fillers restore or augment facial volume with a natural look and feel.
-            </p>
+          <article className="face-card__cols">
+            {/* LEFT: before/after (lip case) */}
+            <div className="face-card__media">
+              <div className="face-grid face-grid--two">
+                <div className="face-thumb">
+                  <img src={lipFillerBefore} alt="Lip filler — before" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+                </div>
+                <div className="face-thumb">
+                  <img src={lipFillerAfter} alt="Lip filler — after" loading="lazy" />
+                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                </div>
+              </div>
+            </div>
 
-            <div className="procedure-grid two-col">
-              {/* Case A */}
-              <div className="img-slot">
-                <img src={lipFillerBefore} alt="Lip filler — before" loading="lazy" />
-                <span className="img-badge before">Before</span>
-              </div>
-              <div className="img-slot">
-                <img src={lipFillerAfter} alt="Lip filler — after" loading="lazy" />
-                <span className="img-badge after">After</span>
-              </div>
+            {/* RIGHT: copy */}
+            <div className="face-card__copy">
+              <p className="face-card__lead">
+                Injectable fillers restore or augment facial volume with a natural look and feel.
+              </p>
             </div>
           </article>
         </section>
 
-        {/* Chemical Peels */}
+        {/* Chemical Peels (text only) */}
         <section
           ref={chemicalPeelsRef}
           id="chemical-peels"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="peels-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="peels-title">Chemical Peels</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              PCA Professional peels can address acne, fine lines, hyperpigmentation,
-              scarring, and redness with tailored protocols.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                PCA Professional peels can address acne, fine lines, hyperpigmentation,
+                scarring, and redness with tailored protocols.
+              </p>
+            </div>
           </article>
         </section>
 
-        {/* Microneedling */}
+        {/* Microneedling (text only) */}
         <section
           ref={microneedlingRef}
           id="microneedling"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="micro-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="micro-title">Microneedling</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              Improves texture and tone by stimulating collagen remodeling with minimal downtime.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                Improves texture and tone by stimulating collagen remodeling with minimal downtime.
+              </p>
+            </div>
           </article>
         </section>
 
-        {/* Dermaplaning */}
+        {/* Dermaplaning (text only) */}
         <section
           ref={dermaplaningRef}
           id="dermaplaning"
-          className="gallery-section"
+          className="face-card face-card--diagonal"
           aria-labelledby="derma-title"
         >
-          <div className="section-header">
+          <div className="face-card__header">
             <h2 id="derma-title">Dermaplaning</h2>
-            <div className="section-accent" />
+            <div className="face-card__accent" />
           </div>
 
-          <article>
-            <p className="section-lead">
-              A gentle exfoliation that removes fine vellus hair and surface debris for brighter, smoother skin.
-            </p>
+          <article className="face-card__cols">
+            <div className="face-card__copy face-card__copy--full">
+              <p className="face-card__lead">
+                A gentle exfoliation that removes fine vellus hair and surface debris for
+                brighter, smoother skin.
+              </p>
+            </div>
           </article>
         </section>
       </div>

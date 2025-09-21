@@ -44,3 +44,29 @@
     }
   }
   
+  /* ~80% larger than the original small size (was ~180–240px) */
+/* 50% larger ≈ 270–360px, then +20% => ≈ 324–432px */
+.face-card__media--narrow {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+}
+
+.face-card__media--narrow .face-thumb {
+  width: clamp(324px, 32vw, 432px);
+  margin: 0 auto;
+}
+
+/* keep cover scaling */
+.face-card__media--narrow .face-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Bias crop toward top so heads aren't cut off (keep if you liked it) */
+.face-thumb--focus-top img { object-position: 50% 25%; }
+/* quick variants if you want to nudge */
+.face-thumb--focus-upper img { object-position: 50% 10%; }
+.face-thumb--focus-mid   img { object-position: 50% 30%; }
+

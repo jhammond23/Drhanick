@@ -81,6 +81,12 @@
   text-shadow: 0 0 8px var(--dark-blue);
 }
 
+#download-cv-button {
+  font-size: 1.5rem;
+  background-color: white;
+  color: var(--grey-text);
+}
+
 /* Container for buttons to align them horizontally */
 .buttons-container {
   display: flex;
@@ -883,3 +889,176 @@
 
 }
 
+
+
+
+
+
+/* ===============================
+   Meet Dr. Hanick — seals stacked ABOVE the text
+   =============================== */
+
+:root{
+  --bio-max: 1200px;
+  --badge-w: clamp(56px, 5.2vw, 76px);
+  --badge-gap: 10px;
+}
+
+.bio-hero{
+  background: var(--dark-blue);
+  color: #e9eef9;
+  padding: clamp(36px, 5vw, 64px) 5vw;
+  border-top: 15px solid var(--grey-text);
+}
+
+.bio-hero__inner{
+  width: min(95vw, var(--bio-max));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  gap: clamp(22px, 4vw, 40px);
+  align-items: start;
+}
+
+/* Photo (slightly smaller than before) */
+.bio-hero__photo{ margin: 0; }
+.bio-hero__photo img{
+  width: clamp(360px, 32vw, 480px);
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  border: 8px solid #fff;
+  box-shadow: 0 18px 45px rgba(0,0,0,.28);
+}
+
+/* Copy column */
+.bio-hero__copy{
+  position: relative;
+  padding-left: 0; /* ensure no side gutter now that seals are above */
+}
+
+/* Seals: stacked ABOVE the title (inline row), fully opaque */
+.bio-hero__badgeBox{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;    /* space before the title */
+}
+.bio-hero__badgeBox img{
+  width: var(--badge-w);
+  height: auto;
+  opacity: 1;
+  filter: none;
+}
+
+.bio-hero__title{
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  margin: 2px 0 12px;
+  color: #fff;
+}
+
+.bio-hero__lead{
+  font-size: clamp(1.05rem, 1.25vw, 1.3rem);
+  line-height: 1.7;
+  color: #e9eef9;
+  margin: 0 0 14px;
+}
+
+/* Buttons (smaller, high contrast) */
+.btn-small{
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 999px;
+  margin-right: 10px;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.btn-solid{
+  background: #ffffff;
+  color: var(--dark-blue);
+  border: 2px solid #ffffff;
+}
+.btn-solid:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.btn-outline{
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #8fb4ff;
+}
+.btn-outline:hover{
+  background: #8fb4ff;
+  color: #0b153a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.btn-ghost{
+  background: rgba(255,255,255,.08);
+  color: #ffffff;
+  border: 2px solid rgba(255,255,255,.15);
+}
+.btn-ghost:hover{
+  background: rgba(255,255,255,.18);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+
+/* Details (accordion) */
+.bio-hero__details{
+  margin-top: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.bio-hero__summary{
+  padding: 12px 14px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 700;
+}
+.bio-hero__detail-body{ padding: 10px 14px 16px; }
+.bio-hero__detail-body h3{ margin: 10px 0 6px; color: #fff; }
+.bio-hero__detail-body ul{ margin: 0 0 6px 18px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px){
+  .bio-hero__inner{
+    grid-template-columns: 1fr;
+  }
+  .bio-hero__photo{
+    order: 1;
+    justify-self: center;
+  }
+  .bio-hero__copy{
+    order: 2;
+    padding-left: 0;
+  }
+  .bio-hero__badgeBox{
+    margin-bottom: 10px; /* still above the title on mobile */
+  }
+  .bio-hero{
+    padding-top: 32px;
+  }
+}
+
+.bio-hero__actions a {
+  background: white;
+  color: var(--dark-blue);
+  border: none;
+  transition: all .1s ease-in-out;
+  border: 2px solid white;
+
+}
+
+.bio-hero__actions a:hover {
+  background: var(--dark-blue);
+  color: white;
+  border: 2px solid white;
+
+}
