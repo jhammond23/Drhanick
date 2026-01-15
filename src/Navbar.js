@@ -49,13 +49,13 @@ const NavBar = () => {
             <div className="dropdown">
               <NavHashLink to="/face" className={topLinkClass}>Face</NavHashLink>
               <div className="dropdown-menu">
-                <NavHashLink smooth to="/face#neck-lift">Neck Lift</NavHashLink>
                 <NavHashLink smooth to="/face#face-lift">Facelift</NavHashLink>
+                <NavHashLink smooth to="/face#neck-lift">Neck Lift</NavHashLink>
                 <NavHashLink smooth to="/face#facial-implants">Facial Implants</NavHashLink>
-                <NavHashLink smooth to="/face#gender-affirmation">Gender Affirmation</NavHashLink>
                 <NavHashLink smooth to="/face#ear-surgery">Cosmetic Ear Surgery</NavHashLink>
                 <NavHashLink smooth to="/face#ear-well">EarWell®</NavHashLink>
                 <NavHashLink smooth to="/face#reconstructive-surgery">Reconstructive Surgery</NavHashLink>
+                <NavHashLink smooth to="/face#gender-affirmation">Gender Affirmation</NavHashLink>
 
               </div>
             </div>
@@ -79,14 +79,11 @@ const NavBar = () => {
             <div className="dropdown">
               <NavHashLink to="/non-surgical" className={topLinkClass}>Non-surgical & Laser</NavHashLink>
               <div className="dropdown-menu">
-                <NavHashLink smooth to="/non-surgical#mandy-buie">Mandy Buie, LPN</NavHashLink>
                 <NavHashLink smooth to="/non-surgical#cool-peel">CoolPeel®</NavHashLink>
                 <NavHashLink smooth to="/non-surgical#co2-laser-resurfacing">CO₂ Laser Resurfacing</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#botox">Botox</NavHashLink>
                 <NavHashLink smooth to="/non-surgical#cosmetic-filler">Cosmetic Filler</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#chemical-peels">Chemical Peels</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#microneedling">Microneedling</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#dermaplaning">Dermaplaning</NavHashLink>
+                <NavHashLink smooth to="/non-surgical#professional-skin-care">Professional Skin Care</NavHashLink>
+                <NavHashLink smooth to="/non-surgical#mandy-buie">Mandy Buie, LPN</NavHashLink>
               </div>
             </div>
 

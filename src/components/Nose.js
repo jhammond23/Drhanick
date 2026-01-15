@@ -1,3 +1,4 @@
+// Nose.jsx
 import React, { useRef } from "react";
 import "./Nose.css"; // Make sure Nose.css includes the same card system as Face.css
 
@@ -67,10 +68,17 @@ const Nose = () => {
             {/* RIGHT: Copy */}
             <div className="face-card__copy">
               <p className="face-card__lead">
-                Rhinoplasty can address both medical and cosmetic needs. If you struggle
-                with nasal breathing, surgery may improve airflow. For cosmetic goals,
-                Dr. Hanick refines nasal shape and contour with precise, natural-looking results.
+                Rhinoplasty can address both medical and cosmetic needs. For those unhappy with the
+                appearance of their nose, Dr. Hanick offers surgery to enhance nasal shape
+                and contour with precise attention to detail. Your goals will be discussed in
+                detail and treatment tailored to your specific vision while preserving the
+                crucial function of nasal breathing.
               </p>
+
+              {/* Gallery jump (Rhinoplasty exists in Gallery -> Nose -> Rhinoplasty) */}
+              <a href="/gallery#nose-rhinoplasty" className='button button--gallery'>
+                View Rhinoplasty Results in Patient Gallery
+              </a>
             </div>
           </article>
         </section>
@@ -92,7 +100,7 @@ const Nose = () => {
             <div className="face-card__copy face-card__copy--full">
               <p className="face-card__lead">
                 A septal perforation may cause whistling, crusting, bleeding, and blockage.
-                After evaluation, surgical closure can be an option in many cases. Come in to
+                After evaluation, surgical closure can be an option in many cases. Come in for an evaluation and examination to
                 see if surgery is right for you.
               </p>
             </div>

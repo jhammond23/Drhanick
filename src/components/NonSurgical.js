@@ -1,131 +1,97 @@
-import React, { useRef } from "react";
-import "./NonSurgical.css"; // make sure this includes the same face-card system used on Face.css
+import React, { useRef } from 'react';
+import './NonSurgical.css';
 
-import faceHeader from "../media/face/crystal stock face feel mandy hands.jpg";
-import fillerBefore1 from "../media/nonsurgical/fillerBefore1.png";
-import fillerAfter1 from "../media/nonsurgical/fillerAfter1.png";
-import fillerBefore2 from "../media/nonsurgical/fillerBefore2.png";
-import fillerAfter2 from "../media/nonsurgical/fillerAfter2.png";
-import co2Before1 from "../media/nonsurgical/co2Before1.png";
-import co2After1 from "../media/nonsurgical/co2After1.png";
-import coolPeel1 from "../media/nonsurgical/coolPeel-before.jpg";
-import coolPeel2 from "../media/nonsurgical/coolPeel-after.png";
-import mandy from "../media/mandy by wall.jpg";
-import lipFillerBefore from "../media/nonsurgical/lipFiller2Before.png";
-import lipFillerAfter from "../media/nonsurgical/lipFiller2After.jpg";
+import faceHeader from '../media/face/crystal stock face feel mandy hands.jpg';
+import co2Before1 from '../media/nonsurgical/co2Before1.png';
+import co2After1 from '../media/nonsurgical/co2After1.png';
+import coolPeel1 from '../media/nonsurgical/coolPeel-before.jpg';
+import coolPeel2 from '../media/nonsurgical/coolPeel-after.png';
+import mandy from '../media/mandy by wall.jpg';
+import lipFillerBefore from '../media/nonsurgical/lipFiller2Before.png';
+import lipFillerAfter from '../media/nonsurgical/lipFiller2After.jpg';
 
 const NonSurgical = () => {
   const coolPeelRef = useRef();
   const co2LaserRef = useRef();
-  const botoxRef = useRef();
   const fillerRef = useRef();
-  const peelsRef = useRef();
-  const microneedlingRef = useRef();
-  const dermaplaningRef = useRef();
-  const chemicalPeelsRef = useRef();
+  const professionalSkinCareRef = useRef();
   const mandyBuieRef = useRef();
 
   const scrollToRef = (ref) =>
-    window.scrollTo({ top: ref.current.offsetTop - 100, behavior: "smooth" });
+    window.scrollTo({ top: ref.current.offsetTop - 100, behavior: 'smooth' });
+
+  // Gallery anchors (only add buttons where the Gallery actually has a section)
+  const GALLERY_BASE = '/gallery';
+  const GALLERY = {
+    coolPeel: `${GALLERY_BASE}#non-surgical-coolpeel`,
+    co2: `${GALLERY_BASE}#non-surgical-co2-laser-resurfacing`,
+    filler: `${GALLERY_BASE}#non-surgical-lip-filler`,
+  };
 
   return (
-    <div className="non-surgical-container face-container" style={{ marginTop: "100px" }}>
+    <div className='non-surgical-container face-container' style={{ marginTop: '100px' }}>
       {/* HERO */}
-      <div className="header-section">
-        <div className="header-content">
+      <div className='header-section'>
+        <div className='header-content'>
           <h1>Non-Surgical Aesthetic Treatments</h1>
           <p>
-            Explore our range of non-surgical treatments designed to rejuvenate
-            and enhance your appearance without the need for surgery.
+            Explore our range of non-surgical treatments designed to rejuvenate and enhance your appearance without the need for surgery, all in our comfortable, private treatment room.
           </p>
-          <div className="header-buttons">
-            <button onClick={() => scrollToRef(mandyBuieRef)}>Meet Mandy Buie, LPN</button>
+          <div className='header-buttons'>
             <button onClick={() => scrollToRef(coolPeelRef)}>CoolPeel®</button>
             <button onClick={() => scrollToRef(co2LaserRef)}>CO₂ Laser Resurfacing</button>
-            <button onClick={() => scrollToRef(botoxRef)}>Botox</button>
             <button onClick={() => scrollToRef(fillerRef)}>Cosmetic Filler</button>
-            <button onClick={() => scrollToRef(chemicalPeelsRef)}>Chemical Peels</button>
-            <button onClick={() => scrollToRef(microneedlingRef)}>Microneedling</button>
-            <button onClick={() => scrollToRef(dermaplaningRef)}>Dermaplaning</button>
+            <button onClick={() => scrollToRef(professionalSkinCareRef)}>Professional Skin Care</button>
+            <button onClick={() => scrollToRef(mandyBuieRef)}>Meet Mandy Buie, LPN</button>
           </div>
         </div>
-        <div className="header-image">
-          <img src={faceHeader} alt="Consultation" />
+        <div className='header-image'>
+          <img src={faceHeader} alt='Consultation' />
         </div>
       </div>
 
       {/* CONTENT */}
-      <div className="face-content">
-        {/* Mandy */}
-        <section
-          ref={mandyBuieRef}
-          id="mandy-buie"
-          className="face-card face-card--diagonal"
-          aria-labelledby="mandy-title"
-        >
-          <div className="face-card__header">
-            <h2 id="mandy-title">Meet Mandy Buie, LPN</h2>
-            <div className="face-card__accent" />
-          </div>
-
-          <article className="face-card__cols">
-            {/* LEFT: photo */}
-            <div className="face-card__media face-card__media--narrow">
-              <div className="face-thumb face-thumb--focus-top">
-                <img src={mandy} alt="Mandy Buie, LPN" loading="lazy" />
-              </div>
-            </div>
-
-
-
-            {/* RIGHT: text */}
-            <div className="face-card__copy">
-              <p className="face-card__lead">
-                Mandy is a wonderful asset to the MOENT Facial Plastic Surgery team! She
-                specializes in non-surgical treatments designed to rejuvenate aging skin,
-                helping patients achieve a refreshed, youthful appearance.
-              </p>
-              <p className="face-card__lead">
-                Her expertise includes PCA professional skincare and chemical peels,
-                microneedling, dermaplaning, and Botox injections. Mandy also supports
-                Dr. Hanick during in-office procedures such as CO₂ laser resurfacing.
-              </p>
-            </div>
-          </article>
-        </section>
-
+      <div className='face-content'>
         {/* CoolPeel */}
         <section
           ref={coolPeelRef}
-          id="coolpeel"
-          className="face-card face-card--diagonal"
-          aria-labelledby="coolpeel-title"
+          id='coolpeel'
+          className='face-card face-card--diagonal'
+          aria-labelledby='coolpeel-title'
         >
-          <div className="face-card__header">
-            <h2 id="coolpeel-title">CoolPeel®</h2>
-            <div className="face-card__accent" />
+          <div className='face-card__header'>
+            <h2 id='coolpeel-title'>CoolPeel®</h2>
+            <div className='face-card__accent' />
           </div>
 
-          <article className="face-card__cols">
+          <article className='face-card__cols'>
             {/* LEFT: before/after */}
-            <div className="face-card__media">
-              <div className="face-grid face-grid--two">
-                <div className="face-thumb">
-                  <img src={coolPeel1} alt="CoolPeel — before" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+            <div className='face-card__media'>
+              <div className='face-grid face-grid--two'>
+                <div className='face-thumb'>
+                  <img src={coolPeel1} alt='CoolPeel — before' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </div>
-                <div className="face-thumb">
-                  <img src={coolPeel2} alt="CoolPeel — after" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                <div className='face-thumb'>
+                  <img src={coolPeel2} alt='CoolPeel — after' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </div>
               </div>
             </div>
 
             {/* RIGHT: copy */}
-            <div className="face-card__copy">
-              <p className="face-card__lead">
-                A fractional CO₂ treatment designed to refresh skin with minimal downtime.
+            <div className='face-card__copy'>
+              <p className='face-card__lead'>
+                A fractional CO₂ treatment designed to refresh skin with minimal downtime. Learn more about{' '}
+                <a href='https://www.cool-peel.com' target='_blank' rel='noopener noreferrer'>
+                  CoolPeel®
+                </a>
+                .
               </p>
+
+              <a href={GALLERY.coolPeel} className='button button--gallery'>
+                View CoolPeel® Results in Patient Gallery
+              </a>
             </div>
           </article>
         </section>
@@ -133,60 +99,40 @@ const NonSurgical = () => {
         {/* CO₂ Laser Resurfacing */}
         <section
           ref={co2LaserRef}
-          id="co2-laser-resurfacing"
-          className="face-card face-card--diagonal"
-          aria-labelledby="co2-title"
+          id='co2-laser-resurfacing'
+          className='face-card face-card--diagonal'
+          aria-labelledby='co2-title'
         >
-          <div className="face-card__header">
-            <h2 id="co2-title">CO₂ Laser Resurfacing</h2>
-            <div className="face-card__accent" />
+          <div className='face-card__header'>
+            <h2 id='co2-title'>CO₂ Laser Resurfacing</h2>
+            <div className='face-card__accent' />
           </div>
 
-          <article className="face-card__cols">
+          <article className='face-card__cols'>
             {/* LEFT: before/after */}
-            <div className="face-card__media">
-              <div className="face-grid face-grid--two">
-                <div className="face-thumb">
-                  <img src={co2Before1} alt="CO₂ laser resurfacing — before" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+            <div className='face-card__media'>
+              <div className='face-grid face-grid--two'>
+                <div className='face-thumb'>
+                  <img src={co2Before1} alt='CO₂ laser resurfacing — before' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </div>
-                <div className="face-thumb">
-                  <img src={co2After1} alt="CO₂ laser resurfacing — after" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                <div className='face-thumb'>
+                  <img src={co2After1} alt='CO₂ laser resurfacing — after' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </div>
               </div>
             </div>
 
             {/* RIGHT: copy */}
-            <div className="face-card__copy">
-              <p className="face-card__lead">
-                Fractional CO₂ laser is a gold-standard resurfacing option for sun damage
-                and age-related texture changes. Treatments can be performed in-office with
-                comfort measures, or under sedation when combined with other services.
+            <div className='face-card__copy'>
+              <p className='face-card__lead'>
+                Fractional CO₂ laser is a gold-standard resurfacing option for sun damage and age-related texture changes. Treatments can be performed in-office with comfort measures, or under sedation when combined with other services.
               </p>
-              <p className="face-card__lead">Example patient photos courtesy of Cartessa Laser.</p>
-            </div>
-          </article>
-        </section>
+              <p className='face-card__lead'>Example patient photos courtesy of Cartessa Laser.</p>
 
-        {/* Botox (text only) */}
-        <section
-          ref={botoxRef}
-          id="botox"
-          className="face-card face-card--diagonal"
-          aria-labelledby="botox-title"
-        >
-          <div className="face-card__header">
-            <h2 id="botox-title">Botox</h2>
-            <div className="face-card__accent" />
-          </div>
-
-          <article className="face-card__cols">
-            <div className="face-card__copy face-card__copy--full">
-              <p className="face-card__lead">
-                Botulinum toxin injections soften dynamic lines non-surgically. Dr. Hanick
-                and nurse Mandy Buie offer treatments in our comfortable, private procedure room.
-              </p>
+              <a href={GALLERY.co2} className='button button--gallery'>
+                View CO₂ Laser Results in Patient Gallery
+              </a>
             </div>
           </article>
         </section>
@@ -194,99 +140,94 @@ const NonSurgical = () => {
         {/* Cosmetic Filler */}
         <section
           ref={fillerRef}
-          id="cosmetic-filler"
-          className="face-card face-card--diagonal"
-          aria-labelledby="filler-title"
+          id='cosmetic-filler'
+          className='face-card face-card--diagonal'
+          aria-labelledby='filler-title'
         >
-          <div className="face-card__header">
-            <h2 id="filler-title">Cosmetic Filler</h2>
-            <div className="face-card__accent" />
+          <div className='face-card__header'>
+            <h2 id='filler-title'>Cosmetic Filler</h2>
+            <div className='face-card__accent' />
           </div>
 
-          <article className="face-card__cols">
-            {/* LEFT: before/after (lip case) */}
-            <div className="face-card__media">
-              <div className="face-grid face-grid--two">
-                <div className="face-thumb">
-                  <img src={lipFillerBefore} alt="Lip filler — before" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--before">Before</span>
+          <article className='face-card__cols'>
+            {/* LEFT: before/after */}
+            <div className='face-card__media'>
+              <div className='face-grid face-grid--two'>
+                <div className='face-thumb'>
+                  <img src={lipFillerBefore} alt='Lip filler — before' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </div>
-                <div className="face-thumb">
-                  <img src={lipFillerAfter} alt="Lip filler — after" loading="lazy" />
-                  <span className="face-thumb__badge face-thumb__badge--after">After</span>
+                <div className='face-thumb'>
+                  <img src={lipFillerAfter} alt='Lip filler — after' loading='lazy' />
+                  <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </div>
               </div>
             </div>
 
             {/* RIGHT: copy */}
-            <div className="face-card__copy">
-              <p className="face-card__lead">
-                Injectable fillers restore or augment facial volume with a natural look and feel.
+            <div className='face-card__copy'>
+              <p className='face-card__lead'>
+                Dr. Hanick performs cosmetic filler for a variety of treatment areas, most frequently for lip and midfacial restoration and/or augmentation.
+              </p>
+
+              <a href={GALLERY.filler} className='button button--gallery'>
+                View Filler Results in Patient Gallery
+              </a>
+            </div>
+          </article>
+        </section>
+
+        {/* Professional Skin Care (combined) */}
+        <section
+          ref={professionalSkinCareRef}
+          id='professional-skin-care'
+          className='face-card face-card--diagonal'
+          aria-labelledby='pro-skin-title'
+        >
+          <div className='face-card__header'>
+            <h2 id='pro-skin-title'>Professional Skin Care</h2>
+            <div className='face-card__accent' />
+          </div>
+
+          <article className='face-card__cols'>
+            <div className='face-card__copy face-card__copy--full'>
+              <p className='face-card__lead'>
+                Our professional skin care options include <strong>chemical peels</strong>, <strong>microneedling</strong>, and <strong>dermaplaning</strong>—treatments that can improve texture, tone, fine lines, hyperpigmentation, and overall clarity with tailored protocols.
+              </p>
+              <p className='face-card__lead'>
+                These services are commonly paired with a personalized home regimen to help you maintain results between visits.
               </p>
             </div>
           </article>
         </section>
 
-        {/* Chemical Peels (text only) */}
+        {/* Mandy (immediately after Professional Skin Care) */}
         <section
-          ref={chemicalPeelsRef}
-          id="chemical-peels"
-          className="face-card face-card--diagonal"
-          aria-labelledby="peels-title"
+          ref={mandyBuieRef}
+          id='mandy-buie'
+          className='face-card face-card--diagonal'
+          aria-labelledby='mandy-title'
         >
-          <div className="face-card__header">
-            <h2 id="peels-title">Chemical Peels</h2>
-            <div className="face-card__accent" />
+          <div className='face-card__header'>
+            <h2 id='mandy-title'>Meet Mandy Buie, LPN</h2>
+            <div className='face-card__accent' />
           </div>
 
-          <article className="face-card__cols">
-            <div className="face-card__copy face-card__copy--full">
-              <p className="face-card__lead">
-                PCA Professional peels can address acne, fine lines, hyperpigmentation,
-                scarring, and redness with tailored protocols.
-              </p>
+          <article className='face-card__cols'>
+            {/* LEFT: photo */}
+            <div className='face-card__media face-card__media--narrow'>
+              <div className='face-thumb face-thumb--focus-top'>
+                <img src={mandy} alt='Mandy Buie, LPN' loading='lazy' />
+              </div>
             </div>
-          </article>
-        </section>
 
-        {/* Microneedling (text only) */}
-        <section
-          ref={microneedlingRef}
-          id="microneedling"
-          className="face-card face-card--diagonal"
-          aria-labelledby="micro-title"
-        >
-          <div className="face-card__header">
-            <h2 id="micro-title">Microneedling</h2>
-            <div className="face-card__accent" />
-          </div>
-
-          <article className="face-card__cols">
-            <div className="face-card__copy face-card__copy--full">
-              <p className="face-card__lead">
-                Improves texture and tone by stimulating collagen remodeling with minimal downtime.
+            {/* RIGHT: text */}
+            <div className='face-card__copy'>
+              <p className='face-card__lead'>
+                Mandy is a wonderful asset to the MOENT Facial Plastic Surgery team! She specializes in non-surgical treatments designed to rejuvenate aging skin, helping patients achieve a refreshed, youthful appearance.
               </p>
-            </div>
-          </article>
-        </section>
-
-        {/* Dermaplaning (text only) */}
-        <section
-          ref={dermaplaningRef}
-          id="dermaplaning"
-          className="face-card face-card--diagonal"
-          aria-labelledby="derma-title"
-        >
-          <div className="face-card__header">
-            <h2 id="derma-title">Dermaplaning</h2>
-            <div className="face-card__accent" />
-          </div>
-
-          <article className="face-card__cols">
-            <div className="face-card__copy face-card__copy--full">
-              <p className="face-card__lead">
-                A gentle exfoliation that removes fine vellus hair and surface debris for
-                brighter, smoother skin.
+              <p className='face-card__lead'>
+                Her expertise includes PCA professional skincare and chemical peels, microneedling, dermaplaning, and Botox injections. Mandy also supports Dr. Hanick during in-office procedures such as CO₂ laser resurfacing.
               </p>
             </div>
           </article>
