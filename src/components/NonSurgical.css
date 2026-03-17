@@ -8,65 +8,34 @@
     transition: all .25s ease-in-out;
     letter-spacing: 2px;
     text-decoration: underline;
-  }
-
-  .mandy-bio-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-  }
-  
-  .mandy-photo img {
-    width: 340px;
-    border: 25px solid var(--dark-blue);
-    max-width: 100%;
-    border-radius: 30px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.11);
-    margin-left: 250px
-  }
-  
-  .mandy-bio-text {
-    flex: 1;
-    min-width: 250px;
-  }
-  
-  @media (max-width: 768px) {
-    .mandy-bio-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .mandy-photo img {
-      width: 70vw;
-      max-width: 330px;
-    }
-  }
-  
-  /* ~80% larger than the original small size (was ~180–240px) */
-/* 50% larger ≈ 270–360px, then +20% => ≈ 324–432px */
-.face-card__media--narrow {
-  justify-self: center;
-  display: grid;
-  place-items: center;
 }
 
-.face-card__media--narrow .face-thumb {
-  width: clamp(324px, 32vw, 432px);
-  margin: 0 auto;
+/* Professional Skin Care: larger than before, anchored bottom-left */
+.face-card__media--skin-care {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
-/* keep cover scaling */
-.face-card__media--narrow .face-thumb img {
+.face-card__media--skin-care .face-thumb {
+  width: clamp(320px, 34vw, 420px);
+  margin: 0;
+}
+
+/* Keep image scaling clean */
+.face-card__media--skin-care .face-thumb img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.face-card__media--skin-care .face-thumb {
+  overflow: hidden;
+}
+
+.face-card__media--skin-care .face-thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-/* Bias crop toward top so heads aren't cut off (keep if you liked it) */
-.face-thumb--focus-top img { object-position: 50% 25%; }
-/* quick variants if you want to nudge */
-.face-thumb--focus-upper img { object-position: 50% 10%; }
-.face-thumb--focus-mid   img { object-position: 50% 30%; }
-

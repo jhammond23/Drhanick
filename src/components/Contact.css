@@ -1,3 +1,5 @@
+/* Contact.css */
+
 .contact-us-container {
   margin: 100px auto;
   margin-bottom: 0px;
@@ -5,6 +7,10 @@
   color: var(--grey-text);
   padding: 20px;
   position: relative;
+
+  max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-us-container::before {
@@ -26,12 +32,16 @@
   text-align: center;
   font-size: 3rem;
   margin-bottom: 20px;
+  line-height: 1.1;
+  padding: 0 10px;
 }
 
 .contact-description {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 40px;
+  line-height: 1.5;
+  padding: 0 10px;
 }
 
 .book-now-container {
@@ -53,59 +63,76 @@
 
 .book-now-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== Contact cards (desktop: stay on one line) ===== */
 .contact-cards-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  width: fit-content;
-  border-radius: 50px;
+  align-items: stretch;
+
+  /* KEY CHANGE: prevent wrapping on large screens */
+  flex-wrap: nowrap;
+
+  width: 100%;
+  max-width: 1100px;
+
   margin: 50px auto;
-  padding: 10px 100px;
-  opacity: .8;
-  align-items: center;
+  padding: 18px 26px;
+  border-radius: 26px;
+
+  gap: 24px;
+
+  opacity: 0.95;
+  box-sizing: border-box;
 }
 
 .contact-card {
-  padding: 10px;
-  width: fit-content;
-  text-align: center;
+  /* KEY CHANGE: allow cards to shrink to stay on one row */
+  flex: 1 1 0;
+  min-width: 0;
+
+  padding: 18px 18px 20px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   color: var(--dark-blue);
-  justify-content: center;
   text-align: left;
-
+  box-sizing: border-box;
 }
 
 .contact-card:nth-child(1) {
   border-right: 3px solid var(--dark-blue);
-  margin: 0 150px;
-  padding-right: 150px;
+  padding-right: 24px;
 }
 
 .contact-card h3 {
-  font-size: 3rem;
-  margin-bottom: 15px;
+  font-size: 2.3rem;
+  margin-bottom: 12px;
+  line-height: 1.15;
 }
 
 .contact-info {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
   line-height: 1.6;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .button.contact-action-btn {
   background-color: white;
   color: var(--grey-text);
-  padding: 10px 25px;
+  padding: 10px 22px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  min-height: 44px;
 }
 
 .button.contact-action-btn:hover {
@@ -113,59 +140,86 @@
   color: white;
 }
 
+/* ===== Map + Hours ===== */
 .map-hours-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  gap: 50px;
+  align-items: center;
+  gap: 30px;
   flex-wrap: wrap;
   padding: 20px;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.map-container, .hours-container {
-  flex: 1;
-  width: 60%;
+.map-container,
+.hours-container {
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .map-title {
   color: var(--dark-blue);
-  font-size: 3rem;
+  font-size: 2.3rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  line-height: 1.15;
 }
 
-.map-container iframe {
+.map-embed {
   width: 100%;
-  height: 350px;
   border-radius: 15px;
+  overflow: hidden;
   border: none;
+  aspect-ratio: 16 / 10;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .hours-container {
   background-color: var(--light-grey);
   border-radius: 20px;
-  padding: 30px;
+  padding: 24px;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hours-container h3 {
-  font-size: 3rem;
+  font-size: 2.3rem;
   color: var(--dark-blue);
   margin-bottom: 15px;
+  line-height: 1.15;
+}
+
+.hours-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .hours-table {
   margin: 0 auto;
   border-collapse: collapse;
   width: 100%;
+  min-width: 320px;
 }
 
 .hours-table td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 .hours-table tr:nth-child(even) {
@@ -174,29 +228,77 @@
 
 .hours-table td:first-child {
   font-weight: bold;
+  white-space: nowrap;
 }
 
-/* Responsive adjustments */
+/* ===== Only start stacking on smaller screens ===== */
+@media (max-width: 900px) {
+  .contact-cards-container {
+    flex-wrap: wrap;
+    padding: 14px;
+    border-radius: 22px;
+    gap: 16px;
+  }
+
+  .contact-card {
+    flex: 1 1 100%;
+    padding: 16px;
+  }
+
+  .contact-card:nth-child(1) {
+    border-right: none;
+    padding-right: 16px;
+  }
+}
+
 @media (max-width: 768px) {
+  .contact-us-container {
+    padding: 16px;
+    margin: 90px auto 0;
+  }
+
   .contact-header {
     font-size: 2rem;
   }
 
-  .book-now-btn {
-    font-size: 1.25rem;
-    padding: 10px 20px;
+  .contact-description {
+    font-size: 1.15rem;
+    margin-bottom: 24px;
   }
 
-  .contact-card {
-    width: 100%;
-    padding: 20px;
+  .contact-card h3 {
+    font-size: 2rem;
   }
 
-  .map-hours-container {
-    flex-direction: column;
+  .contact-info {
+    font-size: 1.2rem;
   }
 
-  .map-container iframe {
-    height: 250px;
+  .map-title {
+    font-size: 2rem;
+  }
+
+  .hours-container h3 {
+    font-size: 2rem;
+  }
+
+  .hours-table td {
+    font-size: 1.05rem;
+    padding: 10px 8px;
+  }
+
+  .map-embed {
+    aspect-ratio: 16 / 12;
   }
 }
+
+@media (max-width: 768px) {
+  .button.contact-action-btn {
+    width: 100%;
+  }
+
+  .hours-container {
+    padding: 18px;
+  }
+}
+

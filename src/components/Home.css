@@ -254,16 +254,6 @@
   color: var(--dark-blue);
 }
 
-.mandy-section {
-  border-top: 15px solid var(--soft-gray);
-
-}
-
-.mandy-content {
-  background-color: white;
-  border: 10px solid var(--light-grey);
-}
-
 
 .social-icons {
   display: flex;
@@ -294,10 +284,6 @@
   border: 10px solid white;
   width: 300px;
   position: initial;
-}
-
-.mandyPic {
-  border: 10px solid var(--light-grey);
 }
 
 .nursingTeam {
@@ -986,6 +972,7 @@
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
+  margin-top: 1rem;
 }
 .btn-solid{
   background: #ffffff;

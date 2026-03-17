@@ -1,133 +1,242 @@
 import React, { useState, useEffect } from 'react';
+import { NavHashLink } from 'react-router-hash-link';
 import './Navbar.css';
+
+// Importing images
 import logo from './media/drhanick-logo.png';
 import logoMobile from './media/face-logo.png';
-import { NavHashLink } from 'react-router-hash-link'; // important
+
+// --- CONFIGURATION ---
+// Define your navigation structure here. 
+// "path" is the top-level link. "children" are the dropdown items.
+const NAV_ITEMS = [
+  { label: 'Home', path: '/', children: [] },
+  {
+    label: 'Face',
+    path: '/face',
+    children: [
+      { label: 'Facelift', path: '/face#face-lift' },
+      { label: 'Neck Lift', path: '/face#neck-lift' },
+      { label: 'Facial Implants', path: '/face#facial-implants' },
+      { label: 'Cosmetic Ear Surgery', path: '/face#ear-surgery' },
+      { label: 'EarWell®', path: '/face#ear-well' },
+      { label: 'Reconstructive Surgery', path: '/face#reconstructive-surgery' },
+    ],
+  },
+  {
+    label: 'Nose',
+    path: '/nose',
+    children: [
+      { label: 'Rhinoplasty', path: '/nose#rhinoplasty' },
+      { label: 'Nasal Septal Perf. Repair', path: '/nose#nasal-septal-perforation' },
+    ],
+  },
+  {
+    label: 'Eyes',
+    path: '/eyes',
+    children: [
+      { label: 'Blepharoplasty', path: '/eyes#blepharoplasty' },
+      { label: 'Brow Lift', path: '/eyes#brow-lift' },
+    ],
+  },
+  {
+    label: 'Non-surgical & Laser',
+    path: '/non-surgical',
+    children: [
+      { label: 'CoolPeel®', path: '/non-surgical#cool-peel' },
+      { label: 'CO₂ Laser Resurfacing', path: '/non-surgical#co2-laser-resurfacing' },
+      { label: 'Cosmetic Filler', path: '/non-surgical#cosmetic-filler' },
+      { label: 'Professional Skin Care', path: '/non-surgical#professional-skin-care' },
+    ],
+  },
+  { label: 'Gallery', path: '/gallery', children: [] }, // No children, just a link
+  { label: 'Contact', path: '/contact', children: [] },
+];
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(typeof window !== 'undefined' ? window.innerWidth >= 1200 : true);
-  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  // State for mobile accordion: stores the label of the currently open section
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState('');
 
+  // 1. Handle Window Resize
   useEffect(() => {
     const handleResize = () => {
-      const isNowDesktop = window.innerWidth >= 1200;
-      setIsDesktop(isNowDesktop);
-      if (isNowDesktop) setGalleryOpen(false);
+      if (window.innerWidth >= 1200) {
+        setMenuOpen(false);
+        setMobileSubmenuOpen('');
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(s => !s);
-  const closeMenu = () => { setMenuOpen(false); setGalleryOpen(false); };
-  const toggleGalleryMobile = (e) => { if (!isDesktop) { e.preventDefault(); setGalleryOpen(s => !s); } };
+  // 2. Handle Scroll (for navbar appearance)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // v6: function className to inject "active"
-  const topLinkClass = ({ isActive }) => `menu-link nav-link ${isActive ? 'active' : ''}`;
-  const homeLinkClass = ({ isActive }) => `menu-link ${isActive ? 'active' : ''}`;
+  // 3. Lock Body Scroll when Mobile Menu is Open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setMobileSubmenuOpen('');
+  };
+
+  // Toggle mobile accordion sections
+  const toggleMobileSubmenu = (e, label, hasChildren) => {
+    if (!hasChildren) {
+      closeMenu();
+      return;
+    }
+    e.preventDefault(); // Prevent navigation if clicking the accordion header to expand
+    setMobileSubmenuOpen((prev) => (prev === label ? '' : label));
+  };
 
   return (
-    <>
-      <a href='/' aria-label="Go to home">
-        <img src={logoMobile} className='logo-mobile' alt='Missouri ENT logo' />
-      </a>
-
-      <nav className={`nav-bar${menuOpen ? ' open' : ''}`}>
-        <a href="/" className="logo-container" aria-label="Missouri ENT Center home">
-          <img src={logo} className="logo" alt="Missouri ENT Center logo" />
-        </a>
-
-        <div className={`hamburger${menuOpen ? ' open' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+    <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-content">
+        
+        {/* --- LOGO --- */}
+        <div className="logo-wrapper">
+          <a href="/" aria-label="Home">
+            <img src={logo} className="logo-desktop" alt="Missouri ENT Center" />
+            <img src={logoMobile} className="logo-mobile" alt="Missouri ENT Center" />
+          </a>
         </div>
 
-        {isDesktop ? (
-          <>
-            <NavHashLink smooth to="/" end className={homeLinkClass} onClick={closeMenu}>Home</NavHashLink>
+        {/* --- DESKTOP NAV --- */}
+        <nav className="desktop-nav">
+          <ul className="desktop-menu">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label} className={`menu-item ${item.children.length > 0 ? 'has-dropdown' : ''}`}>
+                <NavHashLink 
+                  to={item.path} 
+                  smooth 
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  end={item.path === '/'}
+                >
+                  {item.label}
+                </NavHashLink>
 
-            <div className="dropdown">
-              <NavHashLink to="/face" className={topLinkClass}>Face</NavHashLink>
-              <div className="dropdown-menu">
-                <NavHashLink smooth to="/face#face-lift">Facelift</NavHashLink>
-                <NavHashLink smooth to="/face#neck-lift">Neck Lift</NavHashLink>
-                <NavHashLink smooth to="/face#facial-implants">Facial Implants</NavHashLink>
-                <NavHashLink smooth to="/face#ear-surgery">Cosmetic Ear Surgery</NavHashLink>
-                <NavHashLink smooth to="/face#ear-well">EarWell®</NavHashLink>
-                <NavHashLink smooth to="/face#reconstructive-surgery">Reconstructive Surgery</NavHashLink>
-                <NavHashLink smooth to="/face#gender-affirmation">Gender Affirmation</NavHashLink>
+                {/* Dropdown Menu */}
+                {item.children.length > 0 && (
+                  <div className="dropdown-menu">
+                    {item.children.map((sub) => (
+                      <NavHashLink 
+                        key={sub.label} 
+                        smooth 
+                        to={sub.path} 
+                        className="dropdown-link"
+                      >
+                        {sub.label}
+                      </NavHashLink>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
 
+        {/* --- HAMBURGER BUTTON --- */}
+        <button 
+          className={`hamburger ${menuOpen ? 'active' : ''}`} 
+          onClick={toggleMenu} 
+          aria-label="Toggle menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+      </div>
+
+      {/* --- MOBILE DRAWER OVERLAY --- */}
+      <div className={`mobile-backdrop ${menuOpen ? 'open' : ''}`} onClick={closeMenu} />
+
+      {/* --- MOBILE DRAWER CONTENT --- */}
+      <aside className={`mobile-drawer ${menuOpen ? 'open' : ''}`}>
+        <div className="drawer-header">
+          <img src={logoMobile} alt="Logo" className="drawer-logo" />
+          <button className="close-btn" onClick={closeMenu}></button>
+        </div>
+
+        <div className="drawer-links">
+          {NAV_ITEMS.map((item) => {
+            const hasChildren = item.children.length > 0;
+            const isOpen = mobileSubmenuOpen === item.label;
+
+            return (
+              <div key={item.label} className={`drawer-block ${isOpen ? 'expanded' : ''}`}>
+                <div className="drawer-main-link-wrapper">
+                   {/* Logic: If it has children, the text acts as a toggle. 
+                      If clicking the text should GO to the page AND open menu, use NavHashLink.
+                      Currently, for accordion UX, clicking usually toggles. 
+                      However, per your Gallery request, Gallery behaves as a link.
+                   */}
+                   {hasChildren ? (
+                      <div 
+                        className="drawer-accordion-toggle" 
+                        onClick={(e) => toggleMobileSubmenu(e, item.label, true)}
+                      >
+                        <span className="drawer-link-text">{item.label}</span>
+                        <span className="chevron">›</span>
+                      </div>
+                   ) : (
+                      <NavHashLink 
+                        smooth 
+                        to={item.path} 
+                        className="drawer-accordion-toggle direct-link"
+                        onClick={closeMenu}
+                      >
+                        <span className="drawer-link-text">{item.label}</span>
+                      </NavHashLink>
+                   )}
+                </div>
+
+                {/* Mobile Submenu Items */}
+                {hasChildren && (
+                  <div className="drawer-submenu" style={{ maxHeight: isOpen ? '500px' : '0' }}>
+                    {/* Optional: Add a "View All [Category]" link first? 
+                        If not, remove the next NavHashLink 
+                    */}
+                    <NavHashLink smooth to={item.path} className="drawer-sublink highlight" onClick={closeMenu}>
+                      Go to {item.label} Overview
+                    </NavHashLink>
+
+                    {item.children.map((sub) => (
+                      <NavHashLink 
+                        key={sub.label} 
+                        smooth 
+                        to={sub.path} 
+                        className="drawer-sublink" 
+                        onClick={closeMenu}
+                      >
+                        {sub.label}
+                      </NavHashLink>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-
-            <div className="dropdown">
-              <NavHashLink to="/nose" className={topLinkClass}>Nose</NavHashLink>
-              <div className="dropdown-menu">
-                <NavHashLink smooth to="/nose#rhinoplasty">Rhinoplasty</NavHashLink>
-                <NavHashLink smooth to="/nose#nasal-septal-perforation">Nasal Septal Perforation Repair</NavHashLink>
-              </div>
-            </div>
-
-            <div className="dropdown">
-              <NavHashLink to="/eyes" className={topLinkClass}>Eyes</NavHashLink>
-              <div className="dropdown-menu">
-                <NavHashLink smooth to="/eyes#blepharoplasty">Blepharoplasty</NavHashLink>
-                <NavHashLink smooth to="/eyes#brow-lift">Brow Lift</NavHashLink>
-              </div>
-            </div>
-
-            <div className="dropdown">
-              <NavHashLink to="/non-surgical" className={topLinkClass}>Non-surgical & Laser</NavHashLink>
-              <div className="dropdown-menu">
-                <NavHashLink smooth to="/non-surgical#cool-peel">CoolPeel®</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#co2-laser-resurfacing">CO₂ Laser Resurfacing</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#cosmetic-filler">Cosmetic Filler</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#professional-skin-care">Professional Skin Care</NavHashLink>
-                <NavHashLink smooth to="/non-surgical#mandy-buie">Mandy Buie, LPN</NavHashLink>
-              </div>
-            </div>
-
-            <div className="dropdown">
-              <NavHashLink to="/gallery" className={topLinkClass}>Gallery</NavHashLink>
-              <div className="dropdown-menu">
-                <NavHashLink smooth to="/gallery#face">Face</NavHashLink>
-                <NavHashLink smooth to="/gallery#nose">Nose</NavHashLink>
-                <NavHashLink smooth to="/gallery#eyes">Eyes</NavHashLink>
-                <NavHashLink smooth to="/gallery#non-surgical">Non-Surgical</NavHashLink>
-              </div>
-            </div>
-
-            <NavHashLink smooth to="/contact" className={topLinkClass} onClick={closeMenu}>Contact</NavHashLink>
-          </>
-        ) : (
-          <div className='mobile-nav-links'>
-            <NavHashLink smooth to="/" end className={homeLinkClass} onClick={closeMenu}>Home</NavHashLink>
-            <NavHashLink smooth to="/face" className={topLinkClass} onClick={closeMenu}>Face</NavHashLink>
-            <NavHashLink smooth to="/nose" className={topLinkClass} onClick={closeMenu}>Nose</NavHashLink>
-            <NavHashLink smooth to="/eyes" className={topLinkClass} onClick={closeMenu}>Eyes</NavHashLink>
-
-            <div className={`dropdown ${galleryOpen ? 'open' : ''}`}>
-              <NavHashLink
-                to="/gallery"
-                className={({ isActive }) => `menu-link nav-link ${isActive ? 'active' : ''} ${galleryOpen ? 'dropdown-active' : ''}`}
-                onClick={toggleGalleryMobile}
-              >
-                Gallery
-              </NavHashLink>
-              <div className={`dropdown-menu ${galleryOpen ? 'show' : ''}`}>
-                <NavHashLink smooth to="/gallery#face" onClick={closeMenu}>Face</NavHashLink>
-                <NavHashLink smooth to="/gallery#nose" onClick={closeMenu}>Nose</NavHashLink>
-                <NavHashLink smooth to="/gallery#eyes" onClick={closeMenu}>Eyes</NavHashLink>
-                <NavHashLink smooth to="/gallery#non-surgical" onClick={closeMenu}>Non-Surgical</NavHashLink>
-              </div>
-            </div>
-
-            <NavHashLink smooth to="/non-surgical" className={topLinkClass} onClick={closeMenu}>Non-surgical & Laser</NavHashLink>
-            <NavHashLink smooth to="/contact" className={topLinkClass} onClick={closeMenu}>Contact</NavHashLink>
-          </div>
-        )}
-      </nav>
-    </>
+            );
+          })}
+        </div>
+      </aside>
+    </header>
   );
 };
 

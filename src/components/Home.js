@@ -38,7 +38,7 @@ const Home = () => {
     },
     {
       text:
-        "Very positive experience. Reception friendly and helpful. Dr. Hanick was wonderful at handling this admittedly stressed patient! I appreciated Mandy following up to see if I had gotten all my prescriptions.",
+        "Very positive experience. Reception friendly and helpful. Dr. Hanick was wonderful at handling this admittedly stressed patient!",
       name: "B.K.",
     },
   ];
@@ -110,16 +110,18 @@ const Home = () => {
               Dr. Hanick is a double board certified, fellowship-trained facial
               plastic surgeon specializing in cosmetic and reconstructive surgery
               practicing in Columbia, Missouri. She combines compassionate,
-              patient-centered care with surgical expertise to help you maximize your
-              innate beauty and feel like your best self. Dr. Hanick focuses on
-              surgery that will appear natural and harmonious with each patient’s
-              unique facial features and always takes into account individual goals.
+              patient-centered care with surgical expertise to help you maximize
+              your innate beauty and feel like your best self. Dr. Hanick
+              focuses on surgery that will appear natural and harmonious with
+              each patient’s unique facial features and always takes into account
+              individual goals.
             </p>
 
             <p className="bio-hero__lead">
-              Dr. Hanick offers surgical services at the hospital or surgery center
-              under general anesthesia, as well as performing many surgeries and
-              procedures in her comfortable, convenient procedure room.
+              Dr. Hanick offers surgical services at the hospital or surgery
+              center under general anesthesia, as well as performing many
+              surgeries and procedures in her comfortable, convenient procedure
+              room.
             </p>
 
             <div
@@ -134,7 +136,6 @@ const Home = () => {
                 Book Now
               </a>
 
-              {/* NEW: View CV (opens in a new tab) */}
               <a
                 href={cv}
                 target="_blank"
@@ -145,7 +146,6 @@ const Home = () => {
                 View CV
               </a>
 
-              {/* Existing: Download CV */}
               <a
                 href={cv}
                 download="Dr_Andrea_Hanick_CV.pdf"
@@ -157,38 +157,47 @@ const Home = () => {
               </a>
             </div>
 
-            <details className="bio-hero__details">
-              <summary className="bio-hero__summary">
-                Education & Certifications
-              </summary>
-              <div className="bio-hero__detail-body">
-                <h3>Education</h3>
-                <ul>
-                  <li>
-                    Fellowship, Facial Plastic and Reconstructive Surgery – Washington University, St. Louis, MO
-                  </li>
-                  <li>
-                    Residency, Otolaryngology–Head and Neck Surgery – Cleveland Clinic, Cleveland, OH
-                  </li>
-                  <li>
-                    Doctor of Medicine – Cleveland Clinic Lerner College of Medicine of Case Western Reserve University, Cleveland, OH
-                  </li>
-                  <li>
-                    Bachelor of Science, Biochemistry – Washington and Lee University, Lexington, VA
-                  </li>
-                </ul>
+<details className="bio-hero__details">
+  <summary className="bio-hero__summary">
+    Education & Certifications
+  </summary>
+  <div className="bio-hero__detail-body">
+    <h3>Education</h3>
+    <ul>
+      <li>
+        Fellowship, Facial Plastic and Reconstructive Surgery – Washington University, St. Louis, MO
+      </li>
+      <li>
+        Residency, Otolaryngology–Head and Neck Surgery – Cleveland Clinic, Cleveland, OH
+      </li>
+      <li>
+        Doctor of Medicine – Cleveland Clinic Lerner College of Medicine of Case Western Reserve University, Cleveland, OH
+      </li>
+      <li>
+        Bachelor of Science, Biochemistry – Washington and Lee University, Lexington, VA
+      </li>
+    </ul>
 
-                <h3>Certifications</h3>
-                <ul>
-                  <li>
-                    American Board of Facial Plastic and Reconstructive Surgery — Board Certified
-                  </li>
-                  <li>
-                    American Board of Otolaryngology–Head and Neck Surgery — Board Certified
-                  </li>
-                </ul>
-              </div>
-            </details>
+    <h3>Certifications</h3>
+    <ul>
+      <li>
+        American Board of Facial Plastic and Reconstructive Surgery — Board Certified
+      </li>
+      <li>
+        American Board of Otolaryngology–Head and Neck Surgery — Board Certified
+      </li>
+      <li>
+        <a
+          href="https://www.aafprs.org/profileplus?id=337655"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Dr. Hanick’s AAFPRS Profile
+        </a>
+      </li>
+    </ul>
+  </div>
+</details>
           </article>
         </div>
       </section>

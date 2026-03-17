@@ -35,7 +35,7 @@ const ContactForm = () => {
           <div className="contact-header-block1">
             <h1>Book a Visit</h1>
           </div>
-          <div className='contact-blurb'>CHANGE THIS TEXT: Like what you see? Curious about how we can work together? Ask me anything. Tell me what you need. My team will get back to you within 48 hours.</div>
+          <div className='contact-blurb'>Like what you see? Curious about how we can work together? Please let us know how we can help you. My team will get back to you as soon as possible.</div>
         </div>
         <form
           className="contact-form"
