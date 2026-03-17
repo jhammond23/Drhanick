@@ -176,5 +176,3 @@ the GitHub repository
 the Firebase project MO-ENT
 
 the Squarespace domain settings for drhanick.com
-
-Before handoff, make sure the next developer or client has the correct access to all three.
