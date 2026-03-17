@@ -94,11 +94,6 @@ const ContactForm = () => {
               <button type="button" className={`time-button ${isTimeSelected('anytime') ? 'selected' : ''}`} onClick={() => selectTime('anytime')}>It doesn't matter</button>
             </div>
           </div>
-
-          <div className="form-field message-field">
-            <label htmlFor="message" className="form-label">Any addtional questions, comments, or things we should know?</label>
-            <textarea id="message" name="message" placeholder="Message" required className="form-textarea"></textarea>
-          </div>
           <button type="submit" className="submit-button" disabled={!formValid}>Send Message</button>
         </form>
       </div>
