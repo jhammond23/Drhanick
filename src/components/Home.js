@@ -5,6 +5,7 @@ import drhanick from "../media/headshot ALH color.jpg";
 import seal from "../media/board-certified-logo.png";
 import seal2 from "../media/seal2.png";
 import cv from "../media/pdfs/Hanick-CV-2024.pdf";
+import BusinessContactLinks from "./BusinessContactLinks";
 
 const Home = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -70,14 +71,7 @@ const Home = () => {
         <div className="hero-section">
           <h1 className="h1">Dr. Andrea Hanick</h1>
           <h2 className="hs1">Facial Plastic Surgery</h2>
-          <div className="buttons-container">
-            <a href="/ask-a-question" className="button">
-              Ask a Question!
-            </a>
-            <a href="/contact-ENT" className="button booknow">
-              Book Now!
-            </a>
-          </div>
+          <BusinessContactLinks variant="light" />
         </div>
       </div>
 
@@ -129,12 +123,7 @@ const Home = () => {
               role="group"
               aria-label="Primary actions"
             >
-              <a href="/ask-a-question" className="btn-small btn-solid">
-                Ask a Question
-              </a>
-              <a href="/contact-ENT" className="btn-small btn-outline">
-                Book Now
-              </a>
+              <BusinessContactLinks variant="dark" />
 
               <a
                 href={cv}

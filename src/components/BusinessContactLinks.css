@@ -1,0 +1,209 @@
+.business-contact-links {
+  --contact-ink: var(--dark-blue);
+  --contact-muted: rgba(0, 1, 55, .68);
+  --contact-divider: rgba(0, 1, 55, .24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  margin-top: 2rem;
+  color: var(--contact-ink);
+}
+
+.business-contact-links__intro {
+  display: flex;
+  width: min(100%, 520px);
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--contact-muted);
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.business-contact-links__intro::before,
+.business-contact-links__intro::after {
+  content: '';
+  width: 58px;
+  height: 1px;
+  background: currentColor;
+  opacity: .45;
+}
+
+.business-contact-links__items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.business-contact-link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 7px 26px 9px;
+  color: var(--contact-ink);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.business-contact-link + .business-contact-link {
+  border-left: 1px solid var(--contact-divider);
+}
+
+.business-contact-link::after {
+  content: '';
+  position: absolute;
+  right: 26px;
+  bottom: 3px;
+  left: 26px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+
+.business-contact-link:hover,
+.business-contact-link:focus-visible {
+  color: #285f8c;
+}
+
+.business-contact-link:hover::after,
+.business-contact-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.business-contact-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.business-contact-link__label {
+  color: var(--contact-muted);
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.business-contact-link__value {
+  font-size: clamp(1.08rem, 1.35vw, 1.24rem);
+  font-weight: 600;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.business-contact-links--dark {
+  --contact-ink: #fff;
+  --contact-muted: rgba(255, 255, 255, .7);
+  --contact-divider: rgba(255, 255, 255, .3);
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.business-contact-links--dark .business-contact-links__intro,
+.business-contact-links--footer .business-contact-links__intro {
+  justify-content: flex-start;
+}
+
+.business-contact-links--dark .business-contact-links__intro::before,
+.business-contact-links--footer .business-contact-links__intro::before {
+  display: none;
+}
+
+.business-contact-links--dark .business-contact-link:hover,
+.business-contact-links--dark .business-contact-link:focus-visible {
+  color: var(--blue-color);
+}
+
+.business-contact-links--footer {
+  --contact-ink: var(--dark-blue);
+  --contact-muted: rgba(0, 1, 55, .66);
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.business-contact-links--footer .business-contact-links__items {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.business-contact-links--footer .business-contact-link {
+  gap: 7px;
+  padding: 4px 0 5px;
+}
+
+.business-contact-links--footer .business-contact-link + .business-contact-link {
+  border-left: 0;
+}
+
+.business-contact-links--footer .business-contact-link::after {
+  right: 0;
+  bottom: 1px;
+  left: 0;
+}
+
+@media (max-width: 640px) {
+  .business-contact-links {
+    width: min(100%, 390px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .business-contact-links__items {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .business-contact-link {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 8px 9px;
+    text-align: center;
+  }
+
+  .business-contact-link + .business-contact-link {
+    border-left: 0;
+  }
+
+  .business-contact-link::after {
+    right: 8px;
+    left: 8px;
+  }
+
+  .business-contact-links--dark,
+  .business-contact-links--footer {
+    margin-left: 0;
+  }
+
+  .business-contact-links--dark .business-contact-links__items,
+  .business-contact-links--footer .business-contact-links__items {
+    align-items: flex-start;
+  }
+
+  .business-contact-links--dark .business-contact-link,
+  .business-contact-links--footer .business-contact-link {
+    width: auto;
+    align-items: flex-start;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .business-contact-links--dark .business-contact-link::after,
+  .business-contact-links--footer .business-contact-link::after {
+    right: 0;
+    left: 0;
+  }
+}

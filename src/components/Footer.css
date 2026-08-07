@@ -23,7 +23,6 @@
   margin: 0;
 }
 .footer-subtitle { margin: 0; font-size: clamp(1rem, 1.6vw, 1.1rem); opacity: .85; }
-.footer-cta { margin-top: 6px; display: inline-block; }
 
 .footer-heading {
   font-size: clamp(1.05rem, 1.7vw, 1.2rem);

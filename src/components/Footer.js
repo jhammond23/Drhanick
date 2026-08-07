@@ -1,5 +1,12 @@
 import React from 'react';
 import './Footer.css';
+import BusinessContactLinks from './BusinessContactLinks';
+import {
+  BUSINESS_EMAIL,
+  BUSINESS_EMAIL_HREF,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_HREF,
+} from '../businessContact';
 
 const Footer = () => {
   // —— Address & map links ——
@@ -18,12 +25,6 @@ const Footer = () => {
   const APPLE_MAPS_URL = `http://maps.apple.com/?q=${MAP_QUERY}`;
 
   // —— Contact info ——
-  const PHONE_DISPLAY = '(573) 214-2000';
-  const PHONE_TEL = 'tel:+15732142000';
-
-  const EMAIL = 'facialplasticsurgery@moentcenter.com';
-  const EMAIL_MAILTO = `mailto:${EMAIL}`;
-
   const year = new Date().getFullYear();
 
   return (
@@ -32,7 +33,7 @@ const Footer = () => {
         <div className='footer-top'>
           <div className='footer-col footer-brand'>
             <h2 className='footer-title'>Dr. Andrea Hanick</h2>
-            <a href='/contact-ENT' className='button footer-cta'>Book Now</a>
+            <BusinessContactLinks variant='footer' />
           </div>
 
           <div className='footer-col footer-contact'>
@@ -80,8 +81,8 @@ const Footer = () => {
             </div>
 
             <div className='footer-contact-links'>
-              <a className='footer-link' href={PHONE_TEL}>Call: {PHONE_DISPLAY}</a>
-              <a className='footer-link' href={EMAIL_MAILTO}>{EMAIL}</a>
+              <a className='footer-link' href={BUSINESS_PHONE_HREF}>Call: {BUSINESS_PHONE_DISPLAY}</a>
+              <a className='footer-link' href={BUSINESS_EMAIL_HREF}>{BUSINESS_EMAIL}</a>
             </div>
           </div>
 
@@ -93,8 +94,6 @@ const Footer = () => {
               <li><a href='/nose'>Nose</a></li>
               <li><a href='/non-surgical'>Non-Surgical</a></li>
               <li><a href='/contact'>Contact</a></li>
-              <li><a href='/ask-a-question'>Ask a Question</a></li>
-              <li><a href='/contact-ENT'>Book Now</a></li>
             </ul>
           </div>
         </div>
