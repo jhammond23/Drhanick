@@ -71,7 +71,7 @@ const Home = () => {
         <div className="hero-section">
           <h1 className="h1">Dr. Andrea Hanick</h1>
           <h2 className="hs1">Facial Plastic Surgery</h2>
-          <BusinessContactLinks variant="light" />
+          <BusinessContactLinks variant="light" showEmail={false} />
         </div>
       </div>
 

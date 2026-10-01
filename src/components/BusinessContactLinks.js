@@ -7,7 +7,7 @@ import {
 } from '../businessContact';
 import './BusinessContactLinks.css';
 
-const BusinessContactLinks = ({ variant = 'light', className = '' }) => {
+const BusinessContactLinks = ({ variant = 'light', className = '', showEmail = true }) => {
   const classes = [
     'business-contact-links',
     `business-contact-links--${variant}`,
@@ -30,14 +30,16 @@ const BusinessContactLinks = ({ variant = 'light', className = '' }) => {
           <span className='business-contact-link__value'>{BUSINESS_PHONE_DISPLAY}</span>
         </a>
 
-        <a
-          className='business-contact-link'
-          href={BUSINESS_EMAIL_HREF}
-          aria-label={`Email ${BUSINESS_EMAIL}`}
-        >
-          <span className='business-contact-link__label'>Email</span>
-          <span className='business-contact-link__value'>{BUSINESS_EMAIL}</span>
-        </a>
+        {showEmail && (
+          <a
+            className='business-contact-link'
+            href={BUSINESS_EMAIL_HREF}
+            aria-label={`Email ${BUSINESS_EMAIL}`}
+          >
+            <span className='business-contact-link__label'>Email</span>
+            <span className='business-contact-link__value'>{BUSINESS_EMAIL}</span>
+          </a>
+        )}
       </div>
     </div>
   );
