@@ -26,7 +26,7 @@ for (const [route,definition] of Object.entries(SEO_PAGES)) {
   page.on('pageerror',error=>errors.push({route,viewport:size.name,error:error.message}));
   page.on('console',message=>{ if(message.type()==='error' && /React|hydration|Minified/.test(message.text())) errors.push({route,viewport:size.name,error:message.text()});});
   page.on('response',res=>{if(res.url().startsWith(origin) && res.status()>=400)resourceFailures.push({route,viewport:size.name,status:res.status(),type:new URL(res.url()).pathname.startsWith('/static/media/')?'existing-media':'site-resource'});});
-  await context.route('**/*',request=>{if(request.request().method()==='POST'){if(new URL(request.request().url()).hostname==='formspree.io') postRequests.push({route});return request.abort();}return request.continue();});
+  await context.route('**/*',request=>{if(request.request().method()==='POST' && new URL(request.request().url()).hostname==='formspree.io'){postRequests.push({route});return request.abort();}return request.continue();});
   await page.goto(origin+route,{waitUntil:'networkidle'});
   assert.equal(await page.title(),expected.title);
   const metas={'name:description':expected.description,'name:robots':getRobots(expected),'property:og:title':expected.title,'property:og:url':expected.url,'name:twitter:title':expected.title};
@@ -48,6 +48,13 @@ for (const [route,definition] of Object.entries(SEO_PAGES)) {
   if(route==='/gallery') {
     assert.ok(await page.locator('.img-slot--sensitive:not(.is-unlocked)').count()>0,'gallery initial sensitive state locked');
     assert.equal(await page.locator('.is-unlocked, .lightbox').count(),0);
+  }
+  if(route==='/contact') {
+    const map=page.locator('iframe[title]');
+    await map.scrollIntoViewIfNeeded();
+    const handle=await map.elementHandle(),frame=await handle.contentFrame();
+    await frame.waitForFunction(()=>document.body && /Map data/.test(document.body.innerText) && !/Place info couldn.t load/.test(document.body.innerText),null,{timeout:15000});
+    await page.evaluate(()=>window.scrollTo(0,0));
   }
   // Save only nonpatient screenshots. Procedure pages mask all images; no gallery/form screenshots.
   if(screenshots && size.name!=='narrow') {
@@ -84,7 +91,7 @@ for (const [route,definition] of Object.entries(SEO_PAGES)) {
   assert.equal(await page.locator('head meta[property="og:title"]').getAttribute('content'),SEO_PAGES['/contact'].title);
   assert.equal(await page.locator('head meta[property="og:url"]').getAttribute('content'),SITE_URL+'/contact');
   assert.equal(await page.locator('head meta[name="twitter:title"]').getAttribute('content'),SEO_PAGES['/contact'].title);
-  checks.push({route,viewport:size.name,status:response.status,overflow:false,initialImageErrors:0,forms:rawForms,spaMetadata:'pass'});
+  checks.push({route,viewport:size.name,status:response.status,overflow:false,initialImageErrors:0,forms:rawForms,spaMetadata:'pass',...(route==='/contact'?{embeddedMap:'pass'}:{})});
   await context.close();
  }
 }

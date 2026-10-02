@@ -249,3 +249,6 @@ IndividualPhysician and MedicalClinic definitions. There is no special AI
 schema or llms.txt requirement. Deployment confirms the published technical
 changes; indexing, rankings, AI inclusion and Search Console/Bing account
 settings require separate verification.
+
+The existing physician-only reception background has a separate optimized derivative (1920 × 1282, 159,187 bytes versus 1,751,797 original bytes, 90.9% smaller). Original source photographs and patient/gallery images remain unchanged. Google map background requests are allowed during browser checks; only form-submission POSTs are blocked, and the contact iframe must render map attribution without a place-info error.
+An unused legacy CSS background reference was removed after confirming zero matching nodes in every generated route and zero source-component references; its original photograph is retained.

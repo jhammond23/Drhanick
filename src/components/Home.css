@@ -10,7 +10,7 @@
   background-size: cover;
   position: relative;
   height: 90vh;
-  background-image: url('../media/photoShoot/ALH\ at\ reception.jpg');
+  background-image: url('../media/optimized/physician-reception.jpg');
   background-repeat: no-repeat;
   background-size: 120%;
   background-position: 100% 30%;
@@ -160,7 +160,6 @@
 
 .drhanick-section::before {
   content: '';
-  background: url('../media/photoShoot/supine\ Alex\ ALH\ out\ of\ photo.jpg');
   background-size: cover;
   opacity: .05;
   width: 100%;
@@ -643,7 +642,7 @@
   .whitetoblue {
     background-size: cover;
     background-position: center top; /* Ensure the image starts from the top */
-    background-image: url('../media/photoShoot/ALH\ at\ reception.jpg');
+    background-image: url('../media/optimized/physician-reception.jpg');
     background-repeat: no-repeat;
     z-index: 0;
     display: flex;
