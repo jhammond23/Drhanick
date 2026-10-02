@@ -24,7 +24,7 @@ const ContactForm = () => {
   const isTimeSelected = (time) => preferredTime === time;
 
   useEffect(() => {
-    const isValid = selectedServices.length > 0 && preferredTime && (!isSelected('other') || otherService.trim());
+    const isValid = selectedServices.length > 0 && preferredTime && (!selectedServices.includes('other') || otherService.trim());
     setFormValid(isValid);
   }, [selectedServices, preferredTime, otherService]);
 

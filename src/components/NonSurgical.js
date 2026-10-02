@@ -17,15 +17,13 @@ const NonSurgical = () => {
   const fillerRef = useRef()
   const professionalSkinCareRef = useRef()
 
-  const scrollToRef = (ref) =>
-    window.scrollTo({ top: ref.current.offsetTop - 100, behavior: 'smooth' })
 
   // Gallery anchors
   const GALLERY_BASE = '/gallery'
   const GALLERY = {
-    coolPeel: `${GALLERY_BASE}#non-surgical-coolpeel`,
-    co2: `${GALLERY_BASE}#non-surgical-co2-laser-resurfacing`,
-    filler: `${GALLERY_BASE}#non-surgical-lip-filler`
+    coolPeel: `${GALLERY_BASE}#face-coolpeel`,
+    co2: `${GALLERY_BASE}#face-co2-laser-resurfacing`,
+    filler: `${GALLERY_BASE}#face-lip-filler`
   }
 
   return (
@@ -39,10 +37,10 @@ const NonSurgical = () => {
             need for surgery, all in our comfortable, private treatment room.
           </p>
           <div className='header-buttons'>
-            <button onClick={() => scrollToRef(coolPeelRef)}>CoolPeel®</button>
-            <button onClick={() => scrollToRef(co2LaserRef)}>CO₂ Laser Resurfacing</button>
-            <button onClick={() => scrollToRef(fillerRef)}>Cosmetic Filler</button>
-            <button onClick={() => scrollToRef(professionalSkinCareRef)}>Professional Skin Care</button>
+            <a href="#coolpeel">CoolPeel®</a>
+            <a href="#co2-laser-resurfacing">CO₂ Laser Resurfacing</a>
+            <a href="#cosmetic-filler">Cosmetic Filler</a>
+            <a href="#professional-skin-care">Professional Skin Care</a>
           </div>
         </div>
         <div className='header-image'>

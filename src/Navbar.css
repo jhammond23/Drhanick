@@ -145,7 +145,8 @@
 }
 
 /* Show dropdown on hover */
-.menu-item:hover .dropdown-menu {
+.menu-item:hover .dropdown-menu,
+.menu-item:focus-within .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
@@ -278,6 +279,12 @@
 }
 
 .drawer-accordion-toggle {
+  width: 100%;
+  border: 0;
+  margin: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,3 +367,7 @@
     height: 60px; /* Smaller navbar on mobile */
   }
 }
+/* Closed navigation must not receive keyboard focus or extend the viewport. */
+.mobile-drawer[hidden], .drawer-submenu[hidden] { display: none; }
+.mobile-drawer { height: 100dvh; max-width: min(400px, 100vw); }
+.navbar-container a:focus-visible, .navbar-container button:focus-visible { outline: 2px solid var(--nav-accent); outline-offset: 3px; }

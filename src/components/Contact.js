@@ -13,7 +13,7 @@ const Contact = () => {
 
       <div className='contact-cards-container'>
         <div className='contact-card'>
-          <h3>Phone</h3>
+          <h2>Phone</h2>
           <p className='contact-info'>+1 (573) 214-2000</p>
           <a href='tel:+15732142000' className='button contact-action-btn'>
             Call Now
@@ -21,7 +21,7 @@ const Contact = () => {
         </div>
 
         <div className='contact-card'>
-          <h3>Address</h3>
+          <h2>Address</h2>
           <p className='contact-info'>
             Dr. Andrea Hanick
             <br />
@@ -44,7 +44,7 @@ const Contact = () => {
 
       <div className='map-hours-container'>
         <div className='map-container'>
-          <h3 className='map-title'>Our Location</h3>
+          <h2 className='map-title'>Our Location</h2>
           <div className='map-embed'>
             <iframe
               title="Dr. Hanick's Clinic Location"
@@ -57,7 +57,7 @@ const Contact = () => {
         </div>
 
         <div className='hours-container'>
-          <h3>Hours of Operation</h3>
+          <h2>Hours of Operation</h2>
 
           {/* Mobile-friendly table wrapper (prevents overflow on small screens) */}
           <div className='hours-table-wrap'>

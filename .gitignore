@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local browser verification evidence and Firebase emulator logs
+/test-results
+firebase-debug.log
+ui-debug.log

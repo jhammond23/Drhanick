@@ -7,7 +7,7 @@ const ContactDev = () => {
       <div className="contact-container">
         <div className="contact-header">
           <div className="contact-header-block1">
-            <h1>Get In Touch</h1>
+            <h1>Contact the Website Developer</h1>
 
           </div>
           <div className='contact-blurb'>Like what you see? Curious about how we can work together? Ask me anything. My team will get back to you within 24 hours.</div>

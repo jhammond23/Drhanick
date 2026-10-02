@@ -89,12 +89,12 @@
 .header-buttons {
   display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px;
 }
-.header-buttons button{
+.header-buttons :is(button, a){
   padding: 12px 24px; background:#e3e3e3; color:var(--dark-blue);
   border:0; border-radius:999px; font-weight:700; font-size:1.05rem;
   box-shadow:0 2px 5px rgba(0,0,0,.2); cursor:pointer; transition:.25s ease;
 }
-.header-buttons button:hover{ background:var(--dark-blue); color:#fff; transform:translateY(-2px); }
+.header-buttons :is(button, a):hover{ background:var(--dark-blue); color:#fff; transform:translateY(-2px); }
 
 /* =========================================================
    CARD SYSTEM — images LEFT, text RIGHT
@@ -306,7 +306,7 @@
 /* ===== Ultra-narrow phones ===== */
 @media (max-width: 380px){
   .header-buttons{ gap: 8px; }
-  .header-buttons button{ padding: 10px 16px; font-size: .95rem; }
+  .header-buttons :is(button, a){ padding: 10px 16px; font-size: .95rem; }
 }
 
 /* Add to Face.css (or merge with existing styles) */
@@ -367,3 +367,7 @@
 .face-sensitive-hide-btn:hover {
   background: #fff;
 }
+
+.header-buttons a { display: inline-block; text-align: center; }
+
+.face-content { max-width: 100%; }

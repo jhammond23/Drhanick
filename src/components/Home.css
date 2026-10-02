@@ -417,7 +417,7 @@
   color: #333;
 }
 
-.testimonial-card h4 {
+.testimonial-card .testimonial-author {
   font-size: 1.5rem;
   margin-top: 1rem;
   color: var(--dark-blue);
@@ -618,7 +618,7 @@
     color: #333;
   }
 
-  .testimonial-card h4 {
+  .testimonial-card .testimonial-author {
     font-size: 1.25rem;
     margin-top: 10px;
     color: var(--dark-blue);
@@ -1003,3 +1003,5 @@
   border: 2px solid white;
 
 }
+
+.service-overview a { color: white; text-decoration: underline; text-underline-offset: 3px; }

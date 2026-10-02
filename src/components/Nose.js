@@ -10,7 +10,6 @@ const Nose = () => {
   const rhinoplastyRef = useRef()
   const nasalSeptalPerforationRef = useRef()
 
-  const scrollToRef = (ref) => window.scrollTo({ top: ref.current.offsetTop - 100, behavior: 'smooth' })
 
   // Gallery anchors
   const GALLERY_BASE = '/gallery'
@@ -23,14 +22,14 @@ const Nose = () => {
       {/* HERO */}
       <div className='header-section'>
         <div className='header-content'>
-          <h1>Nose</h1>
+          <h1>Rhinoplasty & Nasal Surgery</h1>
           <p>
             Dr. Hanick is a nasal surgery specialist. Her training has allowed her to view the nose as both a critical,
             functioning organ and an important part of a harmonious, attractive face.
           </p>
           <div className='header-buttons'>
-            <button onClick={() => scrollToRef(rhinoplastyRef)}>Rhinoplasty</button>
-            <button onClick={() => scrollToRef(nasalSeptalPerforationRef)}>Nasal Septal Perforation</button>
+            <a href="#rhinoplasty">Rhinoplasty</a>
+            <a href="#nasal-septal-perforation">Nasal Septal Perforation</a>
           </div>
         </div>
         <div className='header-image'>
@@ -61,7 +60,7 @@ const Nose = () => {
                   className='face-thumb face-thumb--link'
                   aria-label='View Rhinoplasty results in Patient Gallery'
                 >
-                  <img src={rhinoplasty7} alt='Rhinoplasty — before' loading='lazy' />
+                  <img decoding="async" src={rhinoplasty7} alt='Rhinoplasty — before' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </a>
                 <a
@@ -69,7 +68,7 @@ const Nose = () => {
                   className='face-thumb face-thumb--link'
                   aria-label='View Rhinoplasty results in Patient Gallery'
                 >
-                  <img src={rhinoplasty8} alt='Rhinoplasty — after' loading='lazy' />
+                  <img decoding="async" src={rhinoplasty8} alt='Rhinoplasty — after' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </a>
               </div>

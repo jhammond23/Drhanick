@@ -105,7 +105,7 @@
   padding-right: 24px;
 }
 
-.contact-card h3 {
+.contact-card h2 {
   font-size: 2.3rem;
   margin-bottom: 12px;
   line-height: 1.15;
@@ -195,7 +195,7 @@
   box-sizing: border-box;
 }
 
-.hours-container h3 {
+.hours-container h2 {
   font-size: 2.3rem;
   color: var(--dark-blue);
   margin-bottom: 15px;
@@ -266,7 +266,7 @@
     margin-bottom: 24px;
   }
 
-  .contact-card h3 {
+  .contact-card h2 {
     font-size: 2rem;
   }
 
@@ -278,7 +278,7 @@
     font-size: 2rem;
   }
 
-  .hours-container h3 {
+  .hours-container h2 {
     font-size: 2rem;
   }
 

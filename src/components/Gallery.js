@@ -1,5 +1,5 @@
 // Gallery.jsx
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './Gallery.css'
 
 /* ---------- Face ---------- */
@@ -7,8 +7,6 @@ import earWellBefore from '../media/face/earWellBefore.jpg'
 import earWellAfter from '../media/face/earWellAfter.jpg'
 import earRepairBefore from '../media/face/earRepairBefore.jpg'
 import earRepairAfter from '../media/face/earRepairAfter.jpg'
-import facialRejuvenationBefore from '../media/face/1facialRejuvenation-before.jpg'
-import facialRejuvenationAfter from '../media/face/1facialRejuvenation-after.jpg'
 import faceLiftBefore from '../media/face/faceliftbefore-new.jpg'
 import faceLiftAfter from '../media/face/faceliftafter-new.jpg'
 import necklift1Before from '../media/face/neckLift1.png'
@@ -17,9 +15,7 @@ import necklift2Before from '../media/face/neckLift3.png'
 import necklift2After from '../media/face/neckLift4.png'
 import earSugeryBefore from '../media/face/earSurgeryBefore.png'
 import earSugeryAfter from '../media/face/earSurgeryAfter.png'
-import faceLiftLateral from '../media/face/faceliftLateral1.jpg'
 import faceLiftLateral2 from '../media/face/faceliftLateral2.jpg'
-import faceLiftFrontal from '../media/face/faceliftFrontal.jpg'
 import eyeReconstructionBefore from '../media/reconstruction/eyeLidReconstruction-before.png'
 import eyeReconstructionAfter from '../media/reconstruction/eyeLidReconstruction-after.png.jpg'
 import noseReconstructionBefore from '../media/reconstruction/noseReconstruction-before.png'
@@ -45,10 +41,6 @@ import foreheadBefore from '../media/face/foreheadBefore.png'
 import foreheadAfter from '../media/face/foreheadAfter.png'
 import neckBefore from '../media/face/neckBeforeCorrected.png'
 import neckAfter from '../media/face/neckAfterCorrected.png'
-import rhino4before from '../media/nose/rhino4-before.png'
-import rhino4after from '../media/nose/rhino4-after.png'
-import rhino5before from '../media/nose/rhino5-before.png'
-import rhino5after from '../media/nose/rhino5-after.png'
 
 /* ---------- Nose ---------- */
 import rhino1Before from '../media/nose/rhino1-before.png'
@@ -65,8 +57,6 @@ import browLiftAfter from '../media/face/browliftAfter.png'
 /* ---------- Non-surgical ---------- */
 import coolPeelBefore from '../media/nonsurgical/coolPeel-before.jpg'
 import coolPeelAfter from '../media/nonsurgical/coolPeel-after.png'
-import co2laserBefore from '../media/nonsurgical/co2Before1.png'
-import co2laserAfter from '../media/nonsurgical/co2After1.png'
 import lipBefore from '../media/nonsurgical/lipFiller2Before.png'
 import lipAfter from '../media/nonsurgical/lipFiller2After.jpg'
 import co2Before2 from '../media/nonsurgical/co2Before2.png'
@@ -78,12 +68,9 @@ import lesion2After from '../media/nonsurgical/lesion2After.jpg'
 import lesionBeforeAfter from '../media/nonsurgical/lesionBefore&After.jpg'
 
 /* ---------- Non-surgical (Professional Skin Care) ---------- */
-import skincare from '../media/nonsurgical/Alex-supine-alh-w-sponge.jpg'
 
 const Gallery = () => {
   const faceRef = useRef(null)
-  const eyesRef = useRef(null)
-  const nonsurgicalRef = useRef(null)
 
   const slugify = (str = '') =>
     str
@@ -459,11 +446,11 @@ const Gallery = () => {
   const [lightbox, setLightbox] = useState(null)
   const closeBtnRef = useRef(null)
 
-  const getImagesFor = (sectionIndex, procIndex, patientIndex) => {
+  const getImagesFor = useCallback((sectionIndex, procIndex, patientIndex) => {
     const proc = sections[sectionIndex]?.procedures?.[procIndex]
     const patient = proc?.patients?.[patientIndex]
     return (patient?.items || []).filter((it) => !it.placeholder && it.src)
-  }
+  }, [sections])
 
   const openLightbox = (sectionIndex, procIndex, patientIndex, itemIndex) => {
     const proc = sections[sectionIndex]?.procedures?.[procIndex]
@@ -480,17 +467,17 @@ const Gallery = () => {
     setLightbox({ sectionIndex, procIndex, patientIndex, index: safeIndex, src, alt })
   }
 
-  const updateLightboxIndex = (nextIndex) => {
+  const updateLightboxIndex = useCallback((nextIndex) => {
     if (!lightbox) return
     const images = getImagesFor(lightbox.sectionIndex, lightbox.procIndex, lightbox.patientIndex)
     if (!images.length) return
     const idx = (nextIndex + images.length) % images.length
     const { src, alt = '' } = images[idx]
     setLightbox({ ...lightbox, index: idx, src, alt })
-  }
+  }, [getImagesFor, lightbox])
 
-  const goNext = () => updateLightboxIndex(lightbox.index + 1)
-  const goPrev = () => updateLightboxIndex(lightbox.index - 1)
+  const goNext = useCallback(() => updateLightboxIndex(lightbox.index + 1), [lightbox, updateLightboxIndex])
+  const goPrev = useCallback(() => updateLightboxIndex(lightbox.index - 1), [lightbox, updateLightboxIndex])
   const closeLightbox = () => setLightbox(null)
 
   useEffect(() => {
@@ -510,7 +497,7 @@ const Gallery = () => {
       document.body.style.overflow = prevOverflow
       window.removeEventListener('keydown', onKey)
     }
-  }, [lightbox])
+  }, [lightbox, goNext, goPrev])
 
   const badgeFor = (alt = '') => {
     const t = alt.toLowerCase()
@@ -584,7 +571,7 @@ const Gallery = () => {
       </div>
 
       {/* Sections */}
-      <main className='gallery-content'>
+      <div className='gallery-content'>
         {sections.map((section, sIdx) => (
           <section
             key={section.id}
@@ -673,7 +660,7 @@ const Gallery = () => {
                                 onClick={handleThumbClick}
                                 aria-label={item.alt || 'Open image'}
                               >
-                                <img src={item.src} alt={item.alt || ''} loading='lazy' />
+                                <img decoding="async" src={item.src} alt={item.alt || ''} loading='lazy' />
                                 {badge ? <span className={`img-badge ${badge.toLowerCase()}`}>{badge}</span> : null}
 
                                 {isSensitive && !unlocked ? (
@@ -709,7 +696,7 @@ const Gallery = () => {
             })}
           </section>
         ))}
-      </main>
+      </div>
 
       {/* Lightbox */}
       {lightbox && (

@@ -27,6 +27,7 @@ From the project folder, install dependencies:
 
 ```bash
 npm install
+```
 
 Start the development server:
 
@@ -178,3 +179,73 @@ the Firebase project MO-ENT
 the Squarespace domain settings for drhanick.com
 
 Before handoff, make sure the next developer or client has the correct access to all three.
+
+
+## Search and static page publishing
+
+The primary canonical host is https://drhanick.com. Firebase project ID is
+\`mo-ent\`; the existing secondary host is https://mo-ent.web.app. The GitHub
+source repository is https://github.com/jhammond23/Drhanick.
+
+\`npm run build\` runs the existing Create React App build, then
+\`scripts/prerender.cjs\` renders all ten existing routes into complete HTML.
+React hydrates these pages and updates their titles, descriptions, canonical
+links, social metadata and JSON-LD during navigation. Firebase serves clean
+URLs, removes trailing slashes and returns the generated HTTP 404 page for
+unknown paths. There is no catch-all rewrite to the homepage.
+
+Seven public content pages are in the generated sitemap. The developer and
+two existing form routes use \`noindex, follow\` and are excluded from it.
+The procedure and gallery pages use \`noimageindex\` while allowing their text
+to be indexed. Existing photo contents and gallery reveal behavior are
+preserved; no review/rating or patient-case structured data is generated.
+
+Business/physician facts are grounded in existing visible content and checked
+against https://www.moentcenter.com/office/,
+https://www.moentcenter.com/andrea-l-hanick-md/ and
+https://www.aafprs.org/profile?id=337655. Existing clinical wording and
+treatment claims require the practice's own clinical review; this change does
+not add outcome, insurance, age or experience claims. The prior removal of the
+hero email link is preserved; the existing phone link and email elsewhere
+remain.
+
+Validation on Jakes-PC:
+
+\`\`\`powershell
+npm run lint
+$env:CI = 'true'
+npm test -- --watchAll=false --runInBand
+npm run build
+firebase emulators:start --only hosting --project mo-ent
+# In another terminal:
+node scripts/verify-site.cjs http://127.0.0.1:5082
+\`\`\`
+
+The browser verification script uses installed Google Chrome. It checks all
+routes at desktop, mobile and 320-pixel widths, navigation, live metadata,
+gallery initial locking, unchanged hero contacts, robots/sitemap, no-JavaScript
+content and real HTTP 404 behavior. It submits no forms and captures no
+patient-gallery screenshots. Procedure-header images and backgrounds are
+masked in saved layout evidence.
+
+Commit reviewed source changes before the final production build so that
+\`build/release.json\` identifies the exact source commit. Deploy using the
+existing authenticated flow:
+
+\`\`\`powershell
+npm run build
+firebase deploy --only hosting --project mo-ent
+node scripts/verify-site.cjs https://drhanick.com
+\`\`\`
+
+Check \`release.json\` and public HTML/JS/CSS hashes against the local build after
+deployment. Check canonical URLs on the Firebase alias as well. The www host
+did not resolve on 2026-10-02 and requires separate DNS/hosting configuration
+if the owner wants that alias.
+
+The implementation follows Google Search's SEO Starter Guide, JavaScript SEO,
+crawlable-link, sitemap and AI-features guidance and Schema.org's
+IndividualPhysician and MedicalClinic definitions. There is no special AI
+schema or llms.txt requirement. Deployment confirms the published technical
+changes; indexing, rankings, AI inclusion and Search Console/Bing account
+settings require separate verification.

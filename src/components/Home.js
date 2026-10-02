@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Home.css";
 
 import drhanick from "../media/headshot ALH color.jpg";
@@ -8,7 +8,6 @@ import cv from "../media/pdfs/Hanick-CV-2024.pdf";
 import BusinessContactLinks from "./BusinessContactLinks";
 
 const Home = () => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
 
   const reviews = [
     {
@@ -44,12 +43,6 @@ const Home = () => {
     },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % reviews.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [reviews.length]);
 
   // Fallback for very old browsers that ignore <a download>
   const handleDownloadCV = (e) => {
@@ -83,6 +76,7 @@ const Home = () => {
               src={drhanick}
               alt="Portrait of Dr. Andrea Hanick"
               loading="lazy"
+              decoding="async"
             />
           </figure>
 
@@ -92,8 +86,8 @@ const Home = () => {
               className="bio-hero__badgeBox"
               aria-label="Professional certifications"
             >
-              <img src={seal} alt="ABFPRS Board Certified" />
-              <img src={seal2} alt="AAO-HNS Seal" />
+              <img src={seal} alt="ABFPRS Board Certified" loading="lazy" decoding="async" />
+              <img src={seal2} alt="AAO-HNS Seal" loading="lazy" decoding="async" />
             </div>
 
             <h2 id="bio-title" className="bio-hero__title">
@@ -145,6 +139,8 @@ const Home = () => {
                 Download CV
               </a>
             </div>
+
+<p className="bio-hero__lead service-overview">Explore <a href="/face">facial surgery</a>, <a href="/eyes">eyelid surgery and brow lift</a>, <a href="/nose">rhinoplasty and nasal surgery</a>, and <a href="/non-surgical">non-surgical treatments</a>. For office hours, directions, or to call about a consultation, visit <a href="/contact">contact and office information</a>.</p>
 
 <details className="bio-hero__details">
   <summary className="bio-hero__summary">
@@ -202,7 +198,7 @@ const Home = () => {
               aria-label={`Testimonial from ${review.name}`}
             >
               <p>{review.text}</p>
-              <h4>{review.name}</h4>
+              <p className="testimonial-author">{review.name}</p>
             </div>
           ))}
         </div>

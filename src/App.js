@@ -14,14 +14,17 @@ import ContactQuestion from './components/ContactQuestion';
 import Face from './components/Face';
 import ScrollToTop from './components/ScrollToTop';
 import Gallery from './components/Gallery';
+import PageMetadata from './components/PageMetadata';
 
-function App() {
+export function AppContent() {
   return (
-    <Router>
+    <>
+      <PageMetadata />
       <ScrollToTop /> {/* <-- added this */}
       <div className='App'>
+        <a className='skip-link' href='#main-content'>Skip to main content</a>
         <NavBar />
-        <div className='service-page'>
+        <main className='service-page' id='main-content'>
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/contact' element={<Contact />} />
@@ -33,12 +36,13 @@ function App() {
             <Route path='/contact-ent' element={<ContactENT />} />
             <Route path='/ask-a-question' element={<ContactQuestion />} />
             <Route path='/gallery' element={<Gallery />} />
+            <Route path='*' element={<section className='not-found'><h1>Page Not Found</h1><p>This page could not be found.</p><p><a href='/'>Visit the homepage</a> or <a href='/contact'>contact the office</a>.</p></section>} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
 
-export default App;
+export default function App() { return <Router><AppContent /></Router>; }

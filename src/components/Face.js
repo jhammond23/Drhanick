@@ -22,10 +22,8 @@ const Face = () => {
   const facialImplantsRef = createRef()
   const earSurgeryRef = createRef()
   const earWellRef = createRef()
-  const genderAffirmation = createRef()
   const reconstructiveSurgery = createRef()
 
-  const scrollToRef = (ref) => window.scrollTo({ top: ref.current.offsetTop - 100, behavior: 'smooth' })
 
   // Gallery anchors (matches the scheme: `${section.id}-${slugify(proc.title)}`)
   const GALLERY_BASE = '/gallery'
@@ -64,12 +62,12 @@ const Face = () => {
             natural beauty and rejuvenate your appearance.
           </p>
           <div className='header-buttons'>
-            <button onClick={() => scrollToRef(faceLiftRef)}>Facelift</button>
-            <button onClick={() => scrollToRef(neckLiftRef)}>Neck Lift</button>
-            <button onClick={() => scrollToRef(facialImplantsRef)}>Facial Implants</button>
-            <button onClick={() => scrollToRef(earSurgeryRef)}>Ear Surgery</button>
-            <button onClick={() => scrollToRef(earWellRef)}>EarWell®</button>
-            <button onClick={() => scrollToRef(reconstructiveSurgery)}>Reconstructive Surgery</button>
+            <a href="#face-lift">Facelift</a>
+            <a href="#neck-lift">Neck Lift</a>
+            <a href="#facial-implants">Facial Implants</a>
+            <a href="#ear-surgery">Ear Surgery</a>
+            <a href="#ear-well">EarWell®</a>
+            <a href="#reconstructive-surgery">Reconstructive Surgery</a>
           </div>
         </div>
         <div className='header-image'>

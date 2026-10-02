@@ -14,7 +14,6 @@ const Eyes = () => {
   const blepharoplastyRef = useRef()
   const browLiftRef = useRef()
 
-  const scrollToRef = (ref) => window.scrollTo({ top: ref.current.offsetTop - 100, behavior: 'smooth' })
 
   // ✅ Gallery anchor updated to match the combined section in Gallery.jsx
   const GALLERY_BASE = '/gallery'
@@ -27,14 +26,14 @@ const Eyes = () => {
       {/* HERO */}
       <div className='header-section'>
         <div className='header-content'>
-          <h1>Eyes</h1>
+          <h1>Eyelid Surgery & Brow Lift</h1>
           <p>
             Enhance your eyes with our specialized procedures. We offer blepharoplasty to rejuvenate eyelids and brow
             lifts to restore a youthful, alert look. Achieve brighter, more expressive eyes with our expert care.
           </p>
           <div className='header-buttons'>
-            <button onClick={() => scrollToRef(blepharoplastyRef)}>Blepharoplasty</button>
-            <button onClick={() => scrollToRef(browLiftRef)}>Brow Lift</button>
+            <a href="#blepharoplasty">Blepharoplasty</a>
+            <a href="#brow-lift">Brow Lift</a>
           </div>
         </div>
         <div className='header-image'>
@@ -61,11 +60,11 @@ const Eyes = () => {
             <div className='face-card__media'>
               <div className='face-grid face-grid--two'>
                 <div className='face-thumb'>
-                  <img src={blephBefore} alt='Blepharoplasty — before' loading='lazy' />
+                  <img decoding="async" src={blephBefore} alt='Blepharoplasty — before' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </div>
                 <div className='face-thumb'>
-                  <img src={blephAfter} alt='Blepharoplasty — after' loading='lazy' />
+                  <img decoding="async" src={blephAfter} alt='Blepharoplasty — after' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </div>
               </div>
@@ -108,11 +107,11 @@ const Eyes = () => {
             <div className='face-card__media'>
               <div className='face-grid face-grid--two'>
                 <div className='face-thumb'>
-                  <img src={faceLiftBefore} alt='Brow lift — before' loading='lazy' />
+                  <img decoding="async" src={faceLiftBefore} alt='Brow lift — before' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--before'>Before</span>
                 </div>
                 <div className='face-thumb'>
-                  <img src={faceLiftAfter} alt='Brow lift — after' loading='lazy' />
+                  <img decoding="async" src={faceLiftAfter} alt='Brow lift — after' loading='lazy' />
                   <span className='face-thumb__badge face-thumb__badge--after'>After</span>
                 </div>
               </div>
